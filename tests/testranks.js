@@ -4,7 +4,8 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testRanks() {
-  var nodes = ['alexa-global-rank', 'alexa-country-rank', 'mozdata-domain-authority'];
+  var nodes = ['alexa-global-rank', 'alexa-country-rank',
+               'mozdata-domain-authority'];
   var length = nodes.length;
   var i = 0;
 
@@ -16,7 +17,6 @@ function testRanks() {
     }
   }
   return false;
-
 }
 
 // Export for phantomjs.
