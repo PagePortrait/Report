@@ -3,7 +3,7 @@
 /**
  * @return {boolean} Returns "true" if test failed.
  */
-function testContent() {
+function testDataTables() {
   var nodes = ['headings-data-table',
                'links-count-data-table',
                'trackers-data-table',
@@ -30,4 +30,4 @@ function testContent() {
 }
 
 // Export for phantomjs.
-window.testcontent = testContent;
+window.testDataTables = testDataTables;
