@@ -32,14 +32,27 @@ function config() {
         var fs = require('fs');
         var path = fs.workingDirectory + '/../tests/';
         var list = fs.list(path);
-        var length = list.length;
-        var i = 0;
 
         page.onError = function(msg, trace) {
-          console.log('onerror:', msg);
+          console.log('CONSOLE ERROR: ', msg);
+        };
+
+        page.onConsoleMessage = function(msg) {
+          console.log('CONSOLE LOG: ' + msg);
         };
 
         page.open(url, function() {
+          setTimeout(function() {
+            runTests_(list);
+            phantom.exit();
+          }, 5000);
+        });
+
+        function runTests_(list) {
+          var result = {'passed': [], 'failed': []};
+          var length = list.length;
+          var i = 0;
+
           for(; i < length;) {
             var name = list[i++];
             var file = path + name;
@@ -48,13 +61,18 @@ function config() {
                 var failed = page.evaluate(function(method) {
                   return window[method]();
                 }, name.slice(0, -3));
-                failed && console.log('Failed:', name);
-                // console.log('Failed:', failed);
+                result[failed ? 'failed' : 'passed'].push(name);
               }
             }
           }
-          phantom.exit();
-        });
+          console.log('\nPassed: ' + result.passed.length, 'Failed: ' + result.failed.length);
+          if (result.failed.length) {
+            console.log('\nFailed tests:');
+            console.log(result.failed.join('\n'));
+          } else {
+            console.log('\nLooks good :)');
+          }
+        }
 
         " > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.js"
 }
@@ -117,4 +135,10 @@ function main() {
   run
 }
 
+echo "============================="
+date # Tue Apr 26 14:48:25 EEST 2016
+echo ""
+
 main "$@"
+
+echo "============================="
