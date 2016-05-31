@@ -28,10 +28,11 @@ readonly PHANTOMJS_LINUX64_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-linux-x86_6
 #
 function config() {
   echo "var page = require('webpage').create();
-        var url = 'http://pageportrait.com/portrait?url=${TEST_URL}';
+        var url = 'http://pageportrait.com/portrait?url=${TEST_URL}&testing=';
         var fs = require('fs');
         var path = fs.workingDirectory + '/../tests/';
         var list = fs.list(path);
+        var TIMEOUT = 15; // in seconds
 
         page.onError = function(msg, trace) {
           console.log('CONSOLE ERROR: ', msg);
@@ -42,10 +43,21 @@ function config() {
         };
 
         page.open(url, function() {
-          setTimeout(function() {
-            runTests_(list);
-            phantom.exit();
-          }, 5000);
+          function wait_() {
+            var loaded = page.evaluate(function(loaded) {
+              return window[loaded];
+            }, 'loaded');
+
+            if (loaded || !TIMEOUT) {
+              console.log('\nSTART TESTING');
+              runTests_(list);
+              phantom.exit();
+            } else {
+              console.log('waiting... ' + TIMEOUT--);
+              setTimeout(wait_, 1E3);
+            }
+          }
+          wait_();
         });
 
         function runTests_(list) {
