@@ -16,7 +16,6 @@ function testContent() {
                'content-social-preview-google-container',
                'content-social-preview-twitter-container',
                'content-trackers-container',
-               'content-canonical-container',
                'content-emails-container',
                'content-technology-container'];
   var length = nodes.length;
