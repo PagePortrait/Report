@@ -32,7 +32,7 @@ function config() {
         var fs = require('fs');
         var path = fs.workingDirectory + '/../tests/';
         var list = fs.list(path);
-        var TIMEOUT = 15; // in seconds
+        var TIMEOUT = 30; // in seconds
 
         page.onError = function(msg, trace) {
           console.log('CONSOLE ERROR: ', msg);
@@ -53,7 +53,7 @@ function config() {
               runTests_(list);
               phantom.exit();
             } else {
-              console.log('waiting... ' + TIMEOUT--);
+              console.log('page loading... ' + TIMEOUT--);
               setTimeout(wait_, 1E3);
             }
           }
