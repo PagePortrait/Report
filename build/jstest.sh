@@ -22,6 +22,8 @@ readonly PHANTOMJS_MACOS_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-macosx.zip"
 readonly PHANTOMJS_LINUX_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-linux-i686.tar.bz2"
 readonly PHANTOMJS_LINUX64_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-linux-x86_64.tar.bz2"
 
+readonly USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+
 
 #
 # Configures tests runner.
@@ -127,7 +129,7 @@ function download() {
       if [[ -n "$WGET" ]]; then
         $WGET "${PHANTOMJS_MACOS_URL}" -O "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.zip"
       else
-        $CURL -L "${PHANTOMJS_MACOS_URL}" > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.zip"
+        $CURL -A "${USER_AGENT}" -L "${PHANTOMJS_MACOS_URL}" > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.zip"
       fi
       echo "Done"
       echo -n "Extracting ${PHANTOMJS_KEY}: "
@@ -137,13 +139,13 @@ function download() {
         if [[ -n "$WGET" ]]; then
           $WGET "${PHANTOMJS_LINUX64_URL}" -O "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
         else
-          $CURL -L "${PHANTOMJS_LINUX64_URL}" > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
+          $CURL -A "${USER_AGENT}" -L "${PHANTOMJS_LINUX64_URL}" > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
         fi
       else
         if [[ -n "$WGET" ]]; then
           $WGET "${PHANTOMJS_LINUX_URL}" -O "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
         else
-          $CURL -L "${PHANTOMJS_LINUX_URL}" > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
+          $CURL -A "${USER_AGENT}" -L "${PHANTOMJS_LINUX_URL}" > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
         fi
       fi
       echo "Done"
