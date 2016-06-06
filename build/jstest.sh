@@ -30,12 +30,11 @@ function config() {
   echo "var page = require('webpage').create();
         var url = 'http://pageportrait.com/portrait?url=${TEST_URL}&mode=test';
         var fs = require('fs');
-        var path = fs.workingDirectory + '/../tests/';
-        var list = fs.list(path);
+        var CWD = fs.workingDirectory;
         var TIMEOUT = 30; // in seconds
-        console.log('Initializing environment.');
-        console.log('Path: ' + path);
-        console.log('Tests: ' + list.length);
+        var path = CWD + (/build\/?$/.test(CWD) ? '/..' : '') + '/tests/';
+        var list = fs.list(path);
+        console.log('Initializing environment: ' + CWD);
 
         page.onError = function(msg, trace) {
           console.log('CONSOLE ERROR: ', msg);
@@ -67,7 +66,7 @@ function config() {
         };
 
         page.open(url, function() {
-          console.log('Loading test URL.');
+          console.log('Loading test URL: ' + url);
           function wait_() {
             var loaded = page.evaluate(function(loaded) {
               return window[loaded];
