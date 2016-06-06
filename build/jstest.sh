@@ -127,7 +127,7 @@ function download() {
     echo "Downloading ${PHANTOMJS_KEY}:"
     if [[ `uname` == "Darwin" ]]; then
       if [[ -n "$WGET" ]]; then
-        $WGET "${PHANTOMJS_MACOS_URL}" -O "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.zip"
+        $WGET -U "${USER_AGENT}" "${PHANTOMJS_MACOS_URL}" -O "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.zip"
       else
         $CURL -A "${USER_AGENT}" -L "${PHANTOMJS_MACOS_URL}" > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.zip"
       fi
@@ -137,13 +137,13 @@ function download() {
     else
       if [[ `uname -m` == "x86_64" ]]; then
         if [[ -n "$WGET" ]]; then
-          $WGET "${PHANTOMJS_LINUX64_URL}" -O "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
+          $WGET -U "${USER_AGENT}" "${PHANTOMJS_LINUX64_URL}" -O "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
         else
           $CURL -A "${USER_AGENT}" -L "${PHANTOMJS_LINUX64_URL}" > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
         fi
       else
         if [[ -n "$WGET" ]]; then
-          $WGET "${PHANTOMJS_LINUX_URL}" -O "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
+          $WGET -U "${USER_AGENT}" "${PHANTOMJS_LINUX_URL}" -O "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
         else
           $CURL -A "${USER_AGENT}" -L "${PHANTOMJS_LINUX_URL}" > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.tar.bz2"
         fi
