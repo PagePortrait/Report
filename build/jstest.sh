@@ -28,11 +28,12 @@ readonly PHANTOMJS_LINUX64_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-linux-x86_6
 #
 function config() {
   echo "var page = require('webpage').create();
-        var url = 'http://pageportrait.com/portrait?url=${TEST_URL}&testing=';
+        var url = 'http://pageportrait.com/portrait?url=${TEST_URL}&mode=test';
         var fs = require('fs');
         var path = fs.workingDirectory + '/../tests/';
         var list = fs.list(path);
         var TIMEOUT = 30; // in seconds
+        console.log('Initializing environment.');
 
         page.onError = function(msg, trace) {
           console.log('CONSOLE ERROR: ', msg);
@@ -42,18 +43,40 @@ function config() {
           console.log('CONSOLE LOG: ' + msg);
         };
 
+        page.onInitialized = function(status) {
+          page.evaluate(function() {
+            window.URL = function(url) {
+              function init_() {
+                var regexp = /^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
+                var match = (url || '').match(regexp) || [];
+                self_['protocol'] = match[2] ? match[2] + ':' : '';
+                self_['host'] = match[4] || '';
+                self_['hostname'] = self_['host'].split(':')[0];
+                self_['port'] = +(self_['host'].split(':')[1]) || '';
+                self_['pathname'] = match[5] || '';
+                self_['search'] = match[7] ? ('?' + match[7]) : '';
+                self_['hash'] = match[9] ? ('#' + match[9]) : '';
+                self_['origin'] = self_['protocol'] + '//' + self_['host'];
+              }
+              var self_ = this;
+              init_();
+            };
+          });
+        };
+
         page.open(url, function() {
+          console.log('Loading test URL.');
           function wait_() {
             var loaded = page.evaluate(function(loaded) {
               return window[loaded];
             }, 'loaded');
 
             if (loaded || !TIMEOUT) {
-              console.log('\nSTART TESTING');
               runTests_(list);
               phantom.exit();
             } else {
-              console.log('page loading... ' + TIMEOUT--);
+              --TIMEOUT;
+              // console.log('page loading... ' + TIMEOUT);
               setTimeout(wait_, 1E3);
             }
           }
@@ -61,6 +84,7 @@ function config() {
         });
 
         function runTests_(list) {
+          console.log('Running tests.');
           var result = {'passed': [], 'failed': []};
           var length = list.length;
           var i = 0;
