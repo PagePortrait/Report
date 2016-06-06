@@ -27,7 +27,7 @@ function testRanks() {
   for (/** @type {string} */ var metric in VALIDATORS) {
     /** @type {Element} */ var element = document.getElementById(metric);
     /** @type {string} */ var content = element && element.textContent.trim();
-    /** @type {fucntion(string):boolean} */ var validator = VALIDATORS[metric];
+    /** @type {function(string):boolean} */ var validator = VALIDATORS[metric];
 
     if (content && !validator(content)) {
       return true;
