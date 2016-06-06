@@ -75,8 +75,7 @@ function config() {
             }, 'loaded');
 
             if (loaded || !TIMEOUT) {
-              runTests_(list);
-              phantom.exit();
+              phantom.exit(runTests_(list));
             } else {
               --TIMEOUT;
               // console.log('page loading... ' + TIMEOUT);
@@ -111,6 +110,7 @@ function config() {
           } else {
             console.log('\nLooks good :)');
           }
+          return result.failed.length;
         }
 
         " > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.js"
