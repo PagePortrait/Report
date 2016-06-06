@@ -34,6 +34,8 @@ function config() {
         var list = fs.list(path);
         var TIMEOUT = 30; // in seconds
         console.log('Initializing environment.');
+        console.log('Path: ' + path);
+        console.log('Tests: ' + list.length);
 
         page.onError = function(msg, trace) {
           console.log('CONSOLE ERROR: ', msg);
