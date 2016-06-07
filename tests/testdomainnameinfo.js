@@ -8,13 +8,13 @@
     var age = document.getElementById('whois-age');
     return 'N/A' == content &&
       !(age && age.textContent) ||
-      +new Date(content);
+      (+new Date(content));
   },
   'whois-expired': function(content) {
     var expiring = document.getElementById('whois-expiring');
     return 'N/A' == content &&
       !(expiring && expiring.textContent) ||
-      +new Date(content);
+      (+new Date(content));
   },
   'whois-updated': function(content) {
     return 'N/A' == content || +new Date(content);
