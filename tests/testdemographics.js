@@ -15,10 +15,10 @@
   'geo-data-table': function(elements) {
     /** @type {number} */ var length = elements.length;
     /** @type {number} */ var index = 0;
-    /** @type {string} */ var content;
-    /** @type {NodeList} */ var cells;
     /** @type {Node} */ var table = document.getElementById('geo-data-table');
     /** @type {Node} */ var parentNode = table && table.parentNode;
+    /** @type {string} */ var content;
+    /** @type {NodeList} */ var cells;
 
     if (parentNode && ~parentNode.className.indexOf('true') &&
         elements.length) {
@@ -66,7 +66,8 @@ function testDemographics() {
   for (/** @type {string} */ var metric in VALIDATORS) {
     /** @type {Element} */ var element = document.getElementById(metric);
     /* @type {function(NodeList):boolean} */ var validator = VALIDATORS[metric];
-    /** @type {NodeList} */ var content = element.getElementsByTagName('tr');
+    /** @type {NodeList} */ var content =
+        element && element.getElementsByTagName('tr');
     if (content && !validator(content)) {
       return true;
     }
