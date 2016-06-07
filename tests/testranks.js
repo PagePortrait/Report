@@ -9,7 +9,7 @@
 /** @const {!RegExp} */ var PATTERN = /^\d([,\.]*\d)*$/;
 
 /** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
-  'alexa-global-rank': function(content) { 
+  'alexa-global-rank': function(content) {
     return PATTERN.test(content) || 'N/A' == content || '-' == content;
   },
   'alexa-country-rank': function(content) {

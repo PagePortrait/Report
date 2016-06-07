@@ -7,7 +7,7 @@
 /**
  * @return {boolean} Returns "true" if test failed.
  */
-function testTags(){
+function testTags() {
   /** @type {Element} */ 
   var container = document.getElementById('content-tags-container');
   /** @type {Element} */
@@ -17,27 +17,27 @@ function testTags(){
   /** @type {Element} */ var table = document.getElementById('tags-data-table');
   /** @type {Element} */ var nodes = table.getElementsByTagName('tr');
   /** @type {number} */ var length = nodes.length;
-  /** @type {NodeList} */ var th;
+  /** @type {NodeList} */ var cells;
   /** @type {string} */ var txt;
   /** @type {number} */ var num;
   /** @type {number} */ var i = 0;
 
-  if (element && message != 0) { 
-    return false;
-  } else if (table) {
-    for (; i < length; i++) {
-      th = nodes[i].querySelectorAll('th, td');
-      txt = th[0].textContent.trim();
-      num = th[1].textContent.trim();
-
-      if (txt.length && PATTERN.test(num)) {
-        return false;
+  if(container && table) {
+    if (element && message) {
+      return false;
+    } else if (table) {
+      for (; i < length; i++) {
+        cells = nodes[i].querySelectorAll('th, td');
+        txt = th[0].textContent.trim();
+        num = th[1].textContent.trim();
+        if (txt.length && PATTERN.test(num)) {
+          return false;
+        }
       }
     }
   }
-  return true;   
+  return true; 
 }
-
 // Export for phantomjs.
 window.testtags = testTags;
 
