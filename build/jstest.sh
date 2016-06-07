@@ -3,7 +3,7 @@
 # Guide: https://google.github.io/styleguide/shell.xml
 # Link: https://code.google.com/p/js-test-driver/
 
-readonly TEST_URL="https://www.dtm.io"
+readonly TEST_URL="http://raccoon.net.ua"
 
 readonly CWD=$(cd $(dirname $0); pwd)
 readonly LIB="${CWD}/lib"
