@@ -28,7 +28,7 @@
     for (; index < length; index++) {
       cells = elements[index].querySelectorAll('th,td');
       content = cells[1].textContent.trim();
-      if (!(cells[0].textContent.trim().length &&
+      if (!(cells[0].textContent.trim() &&
           (PATTERN.test(content) || 'N/A' == content))) {
         return false
       }
