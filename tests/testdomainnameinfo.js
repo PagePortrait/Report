@@ -1,31 +1,40 @@
 /**
  * @fileoverview Defines tests for domain name info.
+ *
+ * @see http://google.github.io/styleguide/javascriptguide.xml
+ * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 
 /** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
-  'whois-created': function(content) {
-    var age = document.getElementById('whois-age');
-    return 'N/A' == content &&
-      !(age && age.textContent) ||
-      (+new Date(content));
+  /** @return {boolean} */ 'whois-created': function(content) {
+    return testDomainDate(content, 'whois-age');
   },
-  'whois-expired': function(content) {
-    var expiring = document.getElementById('whois-expiring');
-    return 'N/A' == content &&
-      !(expiring && expiring.textContent) ||
-      (+new Date(content));
+  /** @return {boolean} */ 'whois-expired': function(content) {
+    return testDomainDate(content, 'whois-expiring');
   },
-  'whois-updated': function(content) {
+  /** @return {boolean} */ 'whois-updated': function(content) {
     return 'N/A' == content || +new Date(content);
   },
-  'whois-registrar': function(content) {
+  /** @return {boolean} */ 'whois-registrar': function(content) {
     return !!content;
   },
-  'whois-ip': function(content) {
+  /** @return {boolean} */ 'whois-ip': function(content) {
     return /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(content);
-  },
+  }
 };
+
+
+/**
+ * @param {string} content The element text content.
+ * @param {string} relatedId The related element ID.
+ * @return {boolean} Return "true" if test failed?
+ */
+function testDomainDate(content, relatedId) {
+  var node = document.getElementById(relatedId);
+  return ('N/A' == content && !(node && node.textContent)) ||
+         +new Date(content);
+}
 
 
 /**
@@ -44,5 +53,7 @@ function testDomainNameInfo() {
   return false;
 }
 
+
 // Export for phantomjs.
+/** @type {!function():boolean} */
 window.testdomainnameinfo = testDomainNameInfo;

@@ -22,5 +22,7 @@ function testAudience() {
   return false;
 }
 
+
 // Export for phantomjs.
+/** @type {!function():boolean} */
 window.testaudience = testAudience;
