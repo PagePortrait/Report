@@ -7,7 +7,7 @@
   'whois-created': function(content) {
     var age = document.getElementById('whois-age');
     return 'N/A' == content &&
-      !(age && age.textContent)  ||
+      !(age && age.textContent) ||
       +new Date(content);
   },
   'whois-expired': function(content) {
@@ -20,7 +20,7 @@
     return 'N/A' == content || +new Date(content);
   },
   'whois-registrar': function(content) {
-    return content;
+    return !!content;
   },
   'whois-ip': function(content) {
     return /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.test(content);
