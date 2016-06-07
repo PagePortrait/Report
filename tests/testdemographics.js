@@ -20,7 +20,8 @@
     /** @type {Node} */ var table = document.getElementById('geo-data-table');
     /** @type {Node} */ var parentNode = table && table.parentNode;
 
-    if (parentNode && ~parentNode.className.indexOf('true') && elements.length){
+    if (parentNode && ~parentNode.className.indexOf('true')
+        && elements.length) {
       return true;
     }
 
