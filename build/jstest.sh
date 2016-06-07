@@ -3,7 +3,7 @@
 # Guide: https://google.github.io/styleguide/shell.xml
 # Link: https://code.google.com/p/js-test-driver/
 
-readonly TEST_URL="https://www.dtm.io"
+readonly TEST_URL="http://www.apple.com/"
 
 readonly CWD=$(cd $(dirname $0); pwd)
 readonly LIB="${CWD}/lib"
@@ -28,11 +28,11 @@ readonly PHANTOMJS_LINUX64_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-linux-x86_6
 #
 function config() {
   echo "var page = require('webpage').create();
-        var url = 'http://pageportrait.com/portrait?url=${TEST_URL}&testing=';
+        var url = 'file:///Users/alex/Documents/Report/www/portrait/index.html?url=${TEST_URL}&testing=';
         var fs = require('fs');
         var path = fs.workingDirectory + '/../tests/';
         var list = fs.list(path);
-        var TIMEOUT = 30; // in seconds
+        var TIMEOUT = 15; // in seconds
 
         page.onError = function(msg, trace) {
           console.log('CONSOLE ERROR: ', msg);
