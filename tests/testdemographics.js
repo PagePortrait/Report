@@ -1,5 +1,5 @@
 /**
- * @fileoverview Defines tests for Alexa ranks and Moz authority.
+ * @fileoverview Defines tests for audience demographics.
  *
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
@@ -18,19 +18,17 @@
   'geo-data-table': function(elements) {
     /** @type {number} */ var length = elements.length;
     /** @type {number} */ var index = 0;
-    /** @type {boolean} */ var result = true;
     /** @type {string} */ var content;
     /** @type {NodeList} */ var tableheaders;
     for (; index < length; index++) {
       tableheaders = elements[index].querySelectorAll('th,td');
       content = tableheaders[1].textContent.trim();
-      if (!(tableheaders[0].textContent.trim().length &&
+      if(!(tableheaders[0].textContent.trim().length &&
           (PATTERN.test(content) || 'N/A' == content))) {
-        result = false;
-        break;
+        return false
       }
     }
-    return result;
+    return true;
   }
 };
 
@@ -40,21 +38,22 @@
 function testStaticDataTable(elements,headers){
   /** @type {number} */ var length = elements.length;
   /** @type {number} */ var index = 0;
-  /** @type {boolean} */ var result = true;
   /** @type {string} */ var content;
   /** @type {NodeList} */ var tableheaders;
-  if (length != headers.length) return result;
+
+  if (length != headers.length) return true;
+
   for (; index < length; index++) {
     tableheaders = elements[index].querySelectorAll('th,td');
     content = tableheaders[1].textContent.trim();
     if (!(tableheaders[0].textContent.trim() == headers[index] &&
         (PATTERN.test(content) || 'N/A' == content))) {
-      result = false;
-      break;
+      return false;
     }
   }
-  return result;
+  return true;
 }
+
 /**
  * @return {boolean} Returns "true" if test failed.
  */
