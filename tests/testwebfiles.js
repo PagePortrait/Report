@@ -14,7 +14,9 @@ function testWebFiles() {
   var length = elements && elements.length;
   var content;
   for(; length;){
-    return !PATTERN.test(elements[--length].textContent.trim());
+    if(!PATTERN.test(elements[--length].textContent.trim())){
+      return true;
+    }
   }
   return false;
 }
