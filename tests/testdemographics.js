@@ -1,8 +1,5 @@
 /**
  * @fileoverview Defines tests for audience demographics.
- *
- * @see http://google.github.io/styleguide/javascriptguide.xml
- * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 
@@ -10,7 +7,7 @@
 
 /** @const {!Object.<string, function(NodeList):boolean>} */ var VALIDATORS = {
   'gender-data-table': function(elements) {
-    return testStaticDataTable(elements, ['male','female']);
+    return testStaticDataTable(elements, ['male', 'female']);
   },
   'browsing-location-data-table': function(elements) {
     return testStaticDataTable(elements, ['home', 'school', 'work']);
@@ -19,18 +16,19 @@
     /** @type {number} */ var length = elements.length;
     /** @type {number} */ var index = 0;
     /** @type {string} */ var content;
-    /** @type {NodeList} */ var tableheaders;
+    /** @type {NodeList} */ var cells;
     /** @type {Node} */ var parentNode =
-      document.getElementById('geo-data-table').parentNode;
+        document.getElementById('geo-data-table') &&
+        document.getElementById('geo-data-table').parentNode;
 
     if (parentNode.className.indexOf('true') >= 0 && elements.length){
       return true;
     }
 
     for (; index < length; index++) {
-      tableheaders = elements[index].querySelectorAll('th,td');
-      content = tableheaders[1].textContent.trim();
-      if(!(tableheaders[0].textContent.trim().length &&
+      cells = elements[index].querySelectorAll('th,td');
+      content = cells[1].textContent.trim();
+      if (!(cells[0].textContent.trim().length &&
           (PATTERN.test(content) || 'N/A' == content))) {
         return false
       }
@@ -42,18 +40,18 @@
 /**
  * @return {boolean} Returns "true" if table is not valid.
  */
-function testStaticDataTable(elements,headers){
+function testStaticDataTable(elements, headers) {
   /** @type {number} */ var length = elements.length;
   /** @type {number} */ var index = 0;
   /** @type {string} */ var content;
-  /** @type {NodeList} */ var tableheaders;
+  /** @type {NodeList} */ var cells;
 
   if (length != headers.length) return true;
 
   for (; index < length; index++) {
-    tableheaders = elements[index].querySelectorAll('th,td');
-    content = tableheaders[1].textContent.trim();
-    if (!(tableheaders[0].textContent.trim() == headers[index] &&
+    cells = elements[index].querySelectorAll('th,td');
+    content = cells[1].textContent.trim();
+    if (!(cells[0].textContent.trim() == headers[index] &&
         (PATTERN.test(content) || 'N/A' == content))) {
       return false;
     }
@@ -67,7 +65,7 @@ function testStaticDataTable(elements,headers){
 function testDemographics() {
   for (/** @type {string} */ var metric in VALIDATORS) {
     /** @type {Element} */ var element = document.getElementById(metric);
-    /* @type {function(NodeList):boolean} */  var validator = VALIDATORS[metric];
+    /* @type {function(NodeList):boolean} */ var validator = VALIDATORS[metric];
     /** @type {NodeList} */ var content = element.getElementsByTagName('tr');
     if (content && !validator(content)) {
       return true;
