@@ -22,7 +22,9 @@ readonly PHANTOMJS_MACOS_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-macosx.zip"
 readonly PHANTOMJS_LINUX_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-linux-i686.tar.bz2"
 readonly PHANTOMJS_LINUX64_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-linux-x86_64.tar.bz2"
 
-readonly USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+readonly RND1=$(($RANDOM % 40 + 10))
+readonly RND2=$(($RANDOM % 99 + 10))
+readonly USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.${RND1} (KHTML, like Gecko) Chrome/50.0.2661.${RND2} Safari/537.${RND1}"
 
 
 #
