@@ -3,22 +3,14 @@
  */
 
 
-/** @const {!RegExp} */ var PATTERN = /^\d([,\.]*\d)*$/;
-
 /** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
   'whois-created': function(content) {
-    var age = document.getElementById('whois-age');
-    if('N/A' == content && age){
-      return false;
-    }
-    return 'N/A' == content || +new Date(content);
+    return 'N/A' == content && !document.getElementById('whois-age') ||
+      +new Date(content);
   },
   'whois-expired': function(content) {
-    var expiring = document.getElementById('whois-expiring');
-    if('N/A' == content && expiring){
-      return false;
-    }
-    return 'N/A' == content || +new Date(content);
+    return 'N/A' == content && !document.getElementById('whois-expiring') ||
+     +new Date(content);
   },
   'whois-updated': function(content) {
     return 'N/A' == content || +new Date(content);
