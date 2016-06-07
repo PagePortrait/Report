@@ -17,11 +17,10 @@
     /** @type {number} */ var index = 0;
     /** @type {string} */ var content;
     /** @type {NodeList} */ var cells;
-    /** @type {Node} */ var parentNode =
-        document.getElementById('geo-data-table') &&
-        document.getElementById('geo-data-table').parentNode;
+    /** @type {Node} */ var table = document.getElementById('geo-data-table');
+    /** @type {Node} */ var parentNode = table && table.parentNode;
 
-    if (parentNode.className.indexOf('true') >= 0 && elements.length){
+    if (parentNode && ~parentNode.className.indexOf('true') && elements.length){
       return true;
     }
 
@@ -30,7 +29,7 @@
       content = cells[1].textContent.trim();
       if (!(cells[0].textContent.trim() &&
           (PATTERN.test(content) || 'N/A' == content))) {
-        return false
+        return false;
       }
     }
     return true;
