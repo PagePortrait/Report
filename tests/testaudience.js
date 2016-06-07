@@ -6,7 +6,7 @@
  */
 
 
-/** @const {!RegExp} */ var PATTERN = /^\d([,\.:]*\d)*[%km]?$/;
+/** @const {!RegExp} */ var PATTERN = /^\d([,\.:]*\d)*[%kmgt]?$/;
 
 /**
  * @return {boolean} Returns "true" if test failed.
