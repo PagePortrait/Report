@@ -5,13 +5,15 @@
 
 /** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
   'whois-created': function(content) {
+    var age = document.getElementById('whois-age');
     return 'N/A' == content &&
-      !document.getElementById('whois-age').textContent ||
+      !(age && age.textContent)  ||
       +new Date(content);
   },
   'whois-expired': function(content) {
+    var expiring = document.getElementById('whois-expiring');
     return 'N/A' == content &&
-      !document.getElementById('whois-expiring').textContent ||
+      !(expiring && expiring.textContent) ||
       +new Date(content);
   },
   'whois-updated': function(content) {
