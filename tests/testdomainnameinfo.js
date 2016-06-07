@@ -5,12 +5,14 @@
 
 /** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
   'whois-created': function(content) {
-    return 'N/A' == content && !document.getElementById('whois-age') ||
+    return 'N/A' == content &&
+      !document.getElementById('whois-age').textContent ||
       +new Date(content);
   },
   'whois-expired': function(content) {
-    return 'N/A' == content && !document.getElementById('whois-expiring') ||
-     +new Date(content);
+    return 'N/A' == content &&
+      !document.getElementById('whois-expiring').textContent ||
+      +new Date(content);
   },
   'whois-updated': function(content) {
     return 'N/A' == content || +new Date(content);
