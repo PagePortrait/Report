@@ -20,6 +20,13 @@
     /** @type {number} */ var index = 0;
     /** @type {string} */ var content;
     /** @type {NodeList} */ var tableheaders;
+    /** @type {Node} */ var parentNode =
+      document.getElementById('geo-data-table').parentNode;
+
+    if (parentNode.className.indexOf('true') >= 0 && elements.length){
+      return true;
+    }
+
     for (; index < length; index++) {
       tableheaders = elements[index].querySelectorAll('th,td');
       content = tableheaders[1].textContent.trim();
