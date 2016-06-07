@@ -11,12 +11,13 @@ function testTags() {
   /** @type {Element} */ 
   var container = document.getElementById('content-tags-container');
   /** @type {Element} */
-  var element = container.getElementsByClassName('true')[0];
+  var element = container && container.getElementsByClassName('true')[0];
   /** @type {number} */
-  var message = container.getElementsByClassName('pass')[0].textContent.length;
+  var message = container && 
+      container.getElementsByClassName('pass')[0].textContent.length;
   /** @type {Element} */ var table = document.getElementById('tags-data-table');
-  /** @type {Element} */ var nodes = table.getElementsByTagName('tr');
-  /** @type {number} */ var length = nodes.length;
+  /** @type {Element} */ var nodes = table && table.getElementsByTagName('tr');
+  /** @type {number} */ var length = nodes && nodes.length;
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var txt;
   /** @type {number} */ var num;
