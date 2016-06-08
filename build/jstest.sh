@@ -164,7 +164,13 @@ function download() {
 # Runs tests.
 #
 function run() {
+  echo "============================="
+  date
+  echo ""
   "${PHANTOMJS_LIB}/bin/${PHANTOMJS_KEY}" "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.js"
+  local status=$?
+  echo "============================="
+  exit $status
 }
 
 #
@@ -176,10 +182,4 @@ function main() {
   run
 }
 
-echo "============================="
-date # Tue Apr 26 14:48:25 EEST 2016
-echo ""
-
 main "$@"
-
-echo "============================="
