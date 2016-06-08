@@ -8,25 +8,26 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testTags() {
-  /** @type {Element} */ 
+  /** @type {Element} */
   var container = document.getElementById('content-tags-container');
   /** @type {Element} */
   var element = container && container.getElementsByClassName('true')[0];
+  /** @type {Element} */
+  var passElement = container && container.getElementsByClassName('pass')[0];
   /** @type {number} */
-  var message = container && 
-      container.getElementsByClassName('pass')[0].textContent.length;
+  var message = passElement && passElement.textContent.length;
   /** @type {Element} */ var table = document.getElementById('tags-data-table');
   /** @type {Element} */ var nodes = table && table.getElementsByTagName('tr');
   /** @type {number} */ var length = nodes && nodes.length;
+  /** @type {number} */ var i = 0;
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var txt;
   /** @type {number} */ var num;
-  /** @type {number} */ var i = 0;
-
+  
   if(container && table) {
-    if (element && message) {
+    if (element && passElement && message) {
       return false;
-    } else if (table) {
+    } else {
       for (; i < length; i++) {
         cells = nodes[i].querySelectorAll('th, td');
         txt = cells[0].textContent.trim();
