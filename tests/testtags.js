@@ -29,16 +29,17 @@ function testTags() {
     } else if (table) {
       for (; i < length; i++) {
         cells = nodes[i].querySelectorAll('th, td');
-        txt = th[0].textContent.trim();
-        num = th[1].textContent.trim();
+        txt = cells[0].textContent.trim();
+        num = cells[1].textContent.trim();
         if (txt.length && PATTERN.test(num)) {
           return false;
         }
       }
     }
   }
-  return true; 
+  return true;
 }
+
 // Export for phantomjs.
 window.testtags = testTags;
 
