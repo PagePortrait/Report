@@ -13,7 +13,7 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testAudience() {
-  /** @type {Array.<string>} */ var nodes = [
+  /** @type {!Array.<string>} */ var nodes = [
     'audience-engagement-visitors-value',
     'audience-engagement-pageviews-value',
     'audience-engagement-pageviews-delta',
@@ -32,7 +32,7 @@ function testAudience() {
     element = document.getElementById(nodes[--length]);
     content = element && element.textContent.trim();
 
-    if (!content || !PATTERN.test(content) || 'N/A' != content) {
+    if (!content || !(PATTERN.test(content) || 'N/A' == content)) {
       return true;
     }
   }
