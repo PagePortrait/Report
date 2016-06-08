@@ -19,10 +19,12 @@
  * @return {boolean} Returns 'true' if test failed.
  */
 function testWebFiles() {
-  var container = document.getElementById('webfiles-container');
-  var elements = container && container.querySelectorAll('h4');
-  var length = elements && elements.length;
-  var content;
+  /** @type {Element} */ var container =
+      document.getElementById('webfiles-container');
+  /** @type {NodeList} */ var elements =
+      container && container.querySelectorAll('h4');
+  /** @type {number} */ var length = elements && elements.length;
+  /** @type {string} */ var content;
   for (; length;) {
     content = elements[--length].textContent.trim().split(': ')[1];
     if (!~RESPONSE_STATUSES.indexOf(content)) {
