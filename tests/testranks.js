@@ -9,16 +9,17 @@
 /** @const {!RegExp} */ var PATTERN = /^\d([,\.]*\d)*$/;
 
 /** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
-  'alexa-global-rank': function(content) {
+  /** @return {boolean} */ 'alexa-global-rank': function(content) {
     return PATTERN.test(content) || 'N/A' == content || '-' == content;
   },
-  'alexa-country-rank': function(content) {
+  /** @return {boolean} */ 'alexa-country-rank': function(content) {
     return PATTERN.test(content) || 'N/A' == content;
   },
-  'mozdata-domain-authority': function(content) {
+  /** @return {boolean} */ 'mozdata-domain-authority': function(content) {
     return !isNaN(content) && content >= 0 && content <= 100;
   }
 };
+
 
 /**
  * @return {boolean} Returns "true" if test failed.
@@ -27,7 +28,7 @@ function testRanks() {
   for (/** @type {string} */ var metric in VALIDATORS) {
     /** @type {Element} */ var element = document.getElementById(metric);
     /** @type {string} */ var content = element && element.textContent.trim();
-    /** @type {fucntion(string):boolean} */ var validator = VALIDATORS[metric];
+    /** @type {function(string):boolean} */ var validator = VALIDATORS[metric];
 
     if (content && !validator(content)) {
       return true;
@@ -36,5 +37,7 @@ function testRanks() {
   return false;
 }
 
+
 // Export for phantomjs.
+/** @type {!function():boolean} */
 window.testranks = testRanks;
