@@ -1,5 +1,8 @@
 /**
  * @fileoverview Defines tests for google safe browsing and linked sites.
+ *
+ * @see http://google.github.io/styleguide/javascriptguide.xml
+ * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 

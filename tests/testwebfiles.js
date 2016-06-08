@@ -1,9 +1,12 @@
 /**
  * @fileoverview Defines tests for web files.
+ *
+ * @see http://google.github.io/styleguide/javascriptguide.xml
+ * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 
-/** @const {!Array.<number>} */ var RESPONSE_STATUSES = [
+/** @const {!Array.<number>} */ var HTTP_STATUS_CODES = [
   0, 100, 101, 102, 200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300,
   301, 302, 303, 304, 305, 306, 307, 308, 400, 401, 402, 403, 404, 405, 406,
   407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 420, 421, 422,
@@ -22,10 +25,11 @@ function testWebFiles() {
   /** @type {NodeList} */ var elements =
       container && container.querySelectorAll('h4');
   /** @type {number} */ var length = elements && elements.length;
-  /** @type {number} */ var content;
+  /** @type {number} */ var code;
+
   for (; length;) {
-    content = +elements[--length].textContent.trim().split(': ')[1];
-    if (!~RESPONSE_STATUSES.indexOf(content)) {
+    code = +elements[--length].textContent.trim().split(': ')[1];
+    if (!code || !~HTTP_STATUS_CODES.indexOf(code)) {
       return true;
     }
   }
