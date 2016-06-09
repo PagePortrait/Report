@@ -4,6 +4,7 @@
 
 /** @const {!RegExp} */ var PATTERN = /^\d*$/;
 
+
 /**
  * @return {boolean} Returns "true" if test failed.
  */
@@ -23,8 +24,8 @@ function testTags() {
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var txt;
   /** @type {number} */ var num;
-  
-  if(container && table) {
+
+  if (container && table) {
     if (element && passElement && message) {
       return false;
     } else {
@@ -44,4 +45,4 @@ function testTags() {
 // Export for phantomjs.
 window.testtags = testTags;
 
-          
+
