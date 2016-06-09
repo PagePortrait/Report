@@ -14,7 +14,8 @@ function testMediaQueries() {
   var element = document.getElementById('media-widget');
   /** @type {NodeList} */ var rule = element && 
       element.getElementsByClassName('rule media-none');
-  /** @type {Node} */ var table = document.getElementById('media-data-table');
+  /** @type {Element} */ 
+  var table = document.getElementById('media-data-table');
   /** @type {number} */ var i = 0;
   /** @type {NodeList} */ var rows;
   /** @type {number} */ var length;
