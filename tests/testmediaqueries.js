@@ -4,32 +4,34 @@
 
 
 /**
- * @return {boolean} return true if test failed
+ * @return {boolean} Returns "true" if test failed.
  */
+
+/** @const {!RegExp} */ var MEDIA_PATTERN = /@media([^{]*)/;
+
 function testMediaQueries() {
-  /** @const {!RegExp} */ var MEDIA_PATTERN = /@media([^{]*)/;
-  /** @type {string} */ var node = 'media-widget';
-  /** @type {Element} */ var element = document.getElementById(node);
-  /** @type {Element} */
-  var failClass = document.getElementsByClassName('rule media-none');
+  /** @type {Element} */ 
+  var element = document.getElementById('media-widget');
+  /** @type {NodeList} */ var rule = element 
+      && element.getElementsByClassName('rule media-none');
   /** @type {Node} */ var table = document.getElementById('media-data-table');
   /** @type {number} */ var i = 0;
-  /** @type {Element} */ var tableRows;
+  /** @type {NodeList} */ var rows;
   /** @type {number} */ var length;
 
-  if (!node) {
+  if (!element) {
     return true;
   }
   if (table) {
-    tableRows = element.getElementsByTagName('tr');
-    length = tableRows.length;
+    rows = element && element.getElementsByTagName('tr');
+    length = rows.length;
 
-    for (; i < length; i++) {
-      if (!MEDIA_PATTERN.test(tableRows[i].textContent.trim())) {
+    for (; i < length;) {
+      if (!MEDIA_PATTERN.test(rows[i++].textContent.trim())) {
         return true;
       }
     }
-  } else if (!failClass) {
+  } else if (!rule) {
     return true;
   }
   return false;
