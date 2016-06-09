@@ -10,10 +10,10 @@
  * @return {boolean} return "true" if test failed
  */
 function testTechnologyExtractor() {
-  /** @type {Element} */ var element = document.getElementById('content-tech' +
-      'nology-container');
-  /** @type {Node} */ var table = document.getElementById('technology-' +
-      'data-table');
+  /** @type {Element} */
+  var element = document.getElementById('content-technology-container');
+  /** @type {Element} */
+  var table = document.getElementById('technology-data-table');
   /** @type {Element} */
   var failClass = element && element.getElementsByClassName('rule true');
   /** @type {NodeList} */
