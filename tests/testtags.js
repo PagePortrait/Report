@@ -16,7 +16,7 @@ function testTags() {
   /** @type {Element} */
   var passElement = container && container.getElementsByClassName('pass')[0];
   /** @type {number} */
-  var message = passElement && passElement.textContent.length;
+  var message = passElement && passElement.textContent.trim();
   /** @type {Element} */ var table = document.getElementById('tags-data-table');
   /** @type {Element} */ var nodes = table && table.getElementsByTagName('tr');
   /** @type {number} */ var length = nodes && nodes.length;
@@ -42,7 +42,9 @@ function testTags() {
   return true;
 }
 
+
 // Export for phantomjs.
+/** @type {!function():boolean} */
 window.testtags = testTags;
 
 
