@@ -1,9 +1,9 @@
 /**
- * @fileoverview Defines tests for testTechnologyExtractor.
+ * @fileoverview Defines tests for Technology Extractor widget.
  */
 
 
-/** @const {!RegExp} */ var PATTERN = /^\d([,\.]*\d)*%$/;
+/** @const {!RegExp} */ var PATTERN = /^\d([,\.]*\d)*$/;
 
 
 /**
@@ -14,11 +14,12 @@ function testTechnologyExtractor() {
       'nology-container');
   /** @type {Node} */ var table = document.getElementById('technology-' +
       'data-table');
-  /** @type {Element} */ var failClass = element.getElementsByClassName('rule' +
-      ' true');
-  /** @type {NodeList} */ var elements = element.getElementsByTagName('tr');
+  /** @type {Element} */
+  var failClass = element && element.getElementsByClassName('rule true');
+  /** @type {NodeList} */
+  var elements = element && element.getElementsByTagName('tr');
   /** @type {Node} */ var parentNode = table && table.parentNode;
-  /** @type {number} */ var length = elements.length;
+  /** @type {number} */ var length = element && elements.length;
   /** @type {number} */ var index = 0;
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var content;
