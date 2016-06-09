@@ -12,10 +12,10 @@ function testTags() {
   /** @type {Element} */
   var container = document.getElementById('content-tags-container');
   /** @type {Element} */
-  var element = container && container.getElementsByClassName('true')[0];
+  var trueElement = container && container.getElementsByClassName('true')[0];
   /** @type {Element} */
   var passElement = container && container.getElementsByClassName('pass')[0];
-  /** @type {number} */
+  /** @type {string} */
   var message = passElement && passElement.textContent.trim();
   /** @type {Element} */ var table = document.getElementById('tags-data-table');
   /** @type {Element} */ var nodes = table && table.getElementsByTagName('tr');
@@ -26,7 +26,7 @@ function testTags() {
   /** @type {number} */ var num;
 
   if (container && table) {
-    if (element && passElement && message) {
+    if (trueElement && passElement && message) {
       return false;
     } else {
       for (; i < length; i++) {
@@ -46,5 +46,3 @@ function testTags() {
 // Export for phantomjs.
 /** @type {!function():boolean} */
 window.testtags = testTags;
-
-
