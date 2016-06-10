@@ -7,7 +7,7 @@
 
 
 /**
- * @return {boolean} return "true" if test failed
+ * @return {boolean} Returns "true" if test failed.
  */
 function testTechnologyExtractor() {
   /** @type {Element} */

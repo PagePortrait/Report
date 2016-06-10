@@ -2,6 +2,7 @@
  * @fileoverview Defines tests for deprecated tags checker.
  */
 
+
 /** @const {!RegExp} */ var PATTERN = /^\d*$/;
 
 
