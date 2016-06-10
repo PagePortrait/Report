@@ -49,4 +49,4 @@ function testTechnologyExtractor() {
 
 // Export for phantomjs.
 /** @type {!function():boolean} */
-window.testTechnologyExtractor = testTechnologyExtractor;
+window.testtechnologyextractor = testTechnologyExtractor;
