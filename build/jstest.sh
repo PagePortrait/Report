@@ -39,12 +39,15 @@ function config() {
         var path = CWD + (/build\/?$/.test(CWD) ? '/..' : '') + '/tests/';
         var list = fs.list(path);
         console.log('Initializing environment: ' + CWD);
+
         page.onError = function(msg, trace) {
           console.log('CONSOLE ERROR: ', msg);
         };
+
         page.onConsoleMessage = function(msg) {
           console.log('CONSOLE LOG: ' + msg);
         };
+
         page.onInitialized = function(status) {
           page.evaluate(function() {
             window.URL = function(url) {
@@ -65,12 +68,14 @@ function config() {
             };
           });
         };
+
         page.open(url, function() {
           console.log('Loading test URL: ' + url);
           function wait_() {
             var loaded = page.evaluate(function(loaded) {
               return window[loaded];
             }, 'loaded');
+
             if (loaded || !TIMEOUT) {
               phantom.exit(runTests_(list));
             } else {
@@ -81,11 +86,13 @@ function config() {
           }
           wait_();
         });
+
         function runTests_(list) {
           console.log('Running tests.');
           var result = {'passed': [], 'failed': []};
           var length = list.length;
           var i = 0;
+
           for(; i < length;) {
             var name = list[i++];
             var file = path + name;
@@ -107,6 +114,7 @@ function config() {
           }
           return result.failed.length;
         }
+
         " > "${PHANTOMJS_LIB}/${PHANTOMJS_KEY}.js"
 }
 
