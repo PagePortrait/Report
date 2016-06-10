@@ -24,15 +24,24 @@ function testWebFiles() {
       document.getElementById('webfiles-container');
   /** @type {NodeList} */ var elements =
       container && container.querySelectorAll('h4');
-  /** @type {number} */ var length = elements && elements.length;
+  /** @type {number} */ var length = container && elements.length;
   /** @type {number} */ var code;
+  /** @type {string} */ var text;
+
+  if (!length) {
+    console.log('[webfiles] No element to test.');
+    return true;
+  }
 
   for (; length;) {
-    code = +elements[--length].textContent.trim().split(': ')[1];
+    text = elements[--length].textContent.trim();
+    code = +text.split(': ')[1];
     if (!code || !~HTTP_STATUS_CODES.indexOf(code)) {
+      console.log('[webfiles]', text, code);
       return true;
     }
   }
+
   return false;
 }
 
