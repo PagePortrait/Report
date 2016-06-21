@@ -81,7 +81,7 @@ function testDemographics() {
     /* @type {function(NodeList):boolean} */ var validator = VALIDATORS[metric];
     /** @type {NodeList} */ var elements =
         element && element.getElementsByTagName('tr');
-    if (!elements.length || !validator(elements)) {
+    if (!validator(elements)) {
       return true;
     }
   }
