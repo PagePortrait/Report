@@ -39,7 +39,6 @@ function testWebFiles() {
   /** @type {NodeList} */ var elements =
       container && container.querySelectorAll('h4');
   /** @type {number} */ var length = container && elements.length;
-  var header = container.querySelectorAll('h3').textContent;
   /** @type {number} */ var code;
   /** @type {string} */ var text;
 
