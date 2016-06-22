@@ -13,7 +13,7 @@
     return !!~(['ok', 'malware', 'unknown'].indexOf(content));
   },
   /** @return {boolean} */ 'mozdata-links': function(content) {
-    return PATTERN.test(content) || 'N/A' == content;
+    return PATTERN.test(content) || 'N/A' == content || '-' == content;
   }
 };
 
