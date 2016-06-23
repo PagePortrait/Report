@@ -13,7 +13,7 @@
     return PATTERN.test(content) || 'N/A' == content || '-' == content;
   },
   /** @return {boolean} */ 'alexa-country-rank': function(content) {
-    return PATTERN.test(content) || 'N/A' == content;
+    return PATTERN.test(content) || 'N/A' == content || '-' == content;
   },
   /** @return {boolean} */ 'mozdata-domain-authority': function(content) {
     return !isNaN(content) && content >= 0 && content <= 100;
