@@ -5,10 +5,10 @@
 
 /** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
   /** @return {boolean} */ 'canonical-url': function(content) {
-    return typeof content == 'string';
+    return 'YesNo' == content;
   },
   /** @return {boolean} */ 'canonical-ip': function(content) {
-    return typeof content == 'string';
+    return 'YesNo' == content;
   }
 };
 
@@ -24,10 +24,12 @@ function testCanonicalization() {
     /** @type {Element} */
     var failClass = element && element.getElementsByClassName('fail')[0];
     /** @type {string} */
-    var content = element && element.childNodes[3].textContent.trim();
+    var content = passClass && failClass && passClass.textContent.trim() +
+                  failClass.textContent.trim();
     /** @type {function(string):boolean} */ var validator = VALIDATORS[metric];
 
-    if (!element || !content || !validator(content)) {
+    if (!element || !passClass || !failClass || !content ||
+        !validator(content)) {
       return true;
     } else if ((passClass.style.display == 'block' &&
         failClass.style.display != 'none') ||
