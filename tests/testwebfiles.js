@@ -36,7 +36,7 @@ function testWebFiles() {
   for (; length;) {
     text = elements[--length].textContent.trim();
     code = +text.split(': ')[1];
-    if (!code || !~HTTP_STATUS_CODES.indexOf(code)) {
+    if (!text || !~HTTP_STATUS_CODES.indexOf(code)) {
       console.log('[webfiles]', text, code);
       return true;
     }
