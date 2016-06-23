@@ -9,16 +9,21 @@
 /** @const {!RegExp} */ var PATTERN = /^\d([,\.]*\d)*$/;
 
 /** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
-  /** @return {boolean} */ 'alexa-global-rank': function(content) {
-    return PATTERN.test(content) || 'N/A' == content || '-' == content;
-  },
-  /** @return {boolean} */ 'alexa-country-rank': function(content) {
-    return PATTERN.test(content) || 'N/A' == content;
-  },
+  /** @return {boolean} */ 'alexa-global-rank': validateAlexaData_,
+  /** @return {boolean} */ 'alexa-country-rank': validateAlexaData_,
   /** @return {boolean} */ 'mozdata-domain-authority': function(content) {
     return !isNaN(content) && content >= 0 && content <= 100;
   }
 };
+
+
+/**
+ * @param {string} value The alexa data value to validate.
+ * @return {boolean} Returns "true" if value is valid.
+ */
+function validateAlexaData_(value) {
+  return PATTERN.test(value) || 'N/A' == value || '-' == value;
+}
 
 
 /**
