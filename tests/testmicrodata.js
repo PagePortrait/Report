@@ -1,9 +1,15 @@
 /**
  * @fileoverview Defines tests for microdata widget.
+ * success criterias:
+   - 'microdata-container' shoud exist and contains ul>li;
+   - 'widget-subheader' class shuold have 'Found Number errors and
+     Number warnings out of Number items.' expression;
+   - if widget is empty 'no-data' class should exist;
  */
 
-//::TODO finish regexp
-/** @const {!RegExp} */ var PATTERN = /^$/;;
+
+/** @const {!RegExp} */ var PATTERN = new RegExp('Found\\s[0-9]*\\serrors' +
+    '\\sand\\s[0-9]*\\swarnings\\sout\\sof\\s[0-9]*\\sitems\\.', 'gmi');
 
 
 /**
@@ -11,33 +17,39 @@
  */
 function testMicrodata() {
   /** @type {Element} */
-  var element = document.getElementById('microdata-container');
-  console.log(element.innerHTML);
+  var widget = document.getElementById('microdata-container');
 
   /** @type {Node} */
-  var subheader = element.querySelector('.widget-subheader');
-  console.log(subheader.innerHTML);
-
+  var subheader = widget.querySelector('.widget-subheader').textContent;
   /** @type {Node} */
-  var items = document.querySelector('.widget-content > li');
-
+  var content = widget.querySelector('.widget-content > ul');
   /** @type {Node} */
-  var noData = document.querySelector('.no-data');
+  var list = content.getElementsByTagName('ul');
+  /** @type {Node} */
+  var listItems = content.querySelector('ul > li');
+  /** @type {Node} */
+  var noData = widget.querySelector('.no-data');
+  subheader = subheader.replace(/\s\s+/g, ' ');
 
-  if(!element){
+  if (!content) {
+    console.log('1');
     return true;
   }
 
-  if(!PATTERN.test(subheader)){
+  if (!PATTERN.test(subheader)) {
+    console.log(2);
     return true;
   }
 
-  if(items){
-    //::TODO check if valid widget content else return false
-  }else if(!noData){
-    return true;
+  if (content) {
+    if (listItems) {
+      console.log(3);
+      return false;
+    } else if (!noData) {
+      console.log(4);
+      return true;
+    }
   }
-
 
   return false;
 }
