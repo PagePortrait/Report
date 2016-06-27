@@ -1,41 +1,43 @@
 /**
  * @fileoverview Defines tests for URL and IP canonalization.
+ * Successful criteria:
+ * -Canonicalization widget should exist
+ * -Widget should contain elements with 'canonical-url' and 'canonical-ip' id's
+ * -tag with "passClass" should contain inner text "Yes" and have style
+ *  "display: none"
+ * -tag with "failClass" should contain inner text "No" and have style
+ *  "display: block" or "display: inline-block"
  */
-
-
-/** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
-  /** @return {boolean} */ 'canonical-url': function(content) {
-    return 'YesNo' == content;
-  },
-  /** @return {boolean} */ 'canonical-ip': function(content) {
-    return 'YesNo' == content;
-  }
-};
 
 
 /**
  * @return {boolean} Returns "true" if test failed.
  */
 function testCanonicalization() {
-  for (/** @type {string} */ var metric in VALIDATORS) {
-    /** @type {Element} */ var element = document.getElementById(metric);
-    /** @type {Element} */
-    var passClass = element && element.getElementsByClassName('pass')[0];
-    /** @type {Element} */
-    var failClass = element && element.getElementsByClassName('fail')[0];
-    /** @type {string} */
-    var content = passClass && failClass && passClass.textContent.trim() +
-                  failClass.textContent.trim();
-    /** @type {function(string):boolean} */ var validator = VALIDATORS[metric];
+  /** @type {string} */ var elements = ['canonical-url', 'canonical-ip'];
+  /** @type {number} */ var length = elements.length;
+  /** @type {Element} */ var element;
+  /** @type {Element} */ var passClass;
+  /** @type {Element} */ var failClass;
 
-    if (!element || !passClass || !failClass || !content ||
-        !validator(content)) {
+  for (; length;) {
+    element = document.getElementById(elements[--length]);
+    passClass = element && element.getElementsByClassName('pass')[0];
+    failClass = element && element.getElementsByClassName('fail')[0];
+
+    if (!element) {
       return true;
-    } else if ((passClass.style.display == 'block' &&
-        failClass.style.display != 'none') ||
-        (getComputedStyle(passClass).getPropertyValue('display') == 'none' &&
+    }
+
+    if (passClass.style.display == 'block' &&
+        failClass.style.display != 'none' && 
+        passClass.textContent.trim() != 'Yes') {
+      return true;
+    }
+
+    if (getComputedStyle(passClass).getPropertyValue('display') == 'none' &&
         getComputedStyle(failClass).getPropertyValue('display') !=
-        'inline-block')) {
+        'inline-block' && failClass.textContent.trim() != 'No') {
       return true;
     }
   }
