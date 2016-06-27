@@ -1,12 +1,13 @@
 /**
  * @fileoverview Defines tests for URL and IP canonalization.
  * Successful criteria:
- * -Canonicalization widget should exist
- * -Widget should contain elements with 'canonical-url' and 'canonical-ip' id's
- * -tag with "passClass" should contain inner text "Yes" and have style
- *  "display: none"
- * -tag with "failClass" should contain inner text "No" and have style
- *  "display: block" or "display: inline-block"
+ * - canonicalization widget should exist;
+ * - widget should contain elements with 'canonical-url' and
+ *   'canonical-ip' id's;
+ * - tag with "passElement" should contain inner text "Yes" and have style
+ *   "display: none";
+ * - tag with "failDisplay" should contain inner text "No" and have style
+ *   "display: block" or "display: inline-block".
  */
 
 
@@ -14,34 +15,33 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testCanonicalization() {
-  /** @type {Array.<string>} */ 
-  var elements = ['canonical-url', 'canonical-ip'];
-  /** @type {number} */ var length = elements.length;
+  /** @type {boolean} */ var result = true;
+  /** @type {Array.<string>} */ var widgets = ['canonical-url', 'canonical-ip'];
+  /** @type {number} */ var length = widgets.length;
   /** @type {Element} */ var element;
-  /** @type {Element} */ var passClass;
-  /** @type {Element} */ var failClass;
+  /** @type {Element} */ var passElement;
+  /** @type {Element} */ var failElement;
+  /** @type {Element} */ var passDisplay;
+  /** @type {Element} */ var failDisplay;
 
   for (; length;) {
-    element = document.getElementById(elements[--length]);
-    passClass = element && element.getElementsByClassName('pass')[0];
-    failClass = element && element.getElementsByClassName('fail')[0];
-
-    if (!element) {
-      return true;
-    }
-
-    if (passClass.style.display == 'block' &&
-        failClass.style.display != 'none') {
-      return true;
-    }
-
-    if (getComputedStyle(passClass).getPropertyValue('display') == 'none' &&
-        getComputedStyle(failClass).getPropertyValue('display') !=
-        'inline-block') {
-      return true;
+    element = document.getElementById(widgets[--length]);
+    if (element) {
+      passElement = element.getElementsByClassName('pass')[0];
+      failElement = element.getElementsByClassName('fail')[0];
+      if (passElement && failElement) {
+        passDisplay = getComputedStyle(passElement).getPropertyValue('display');
+        failDisplay = getComputedStyle(failElement).getPropertyValue('display');
+        if (passDisplay == 'none' && (failDisplay == 'inline-block' ||
+            failDisplay == 'block')) {
+          return false;
+        } else if (passDisplay != 'none' && failDisplay == 'none') {
+          return false;
+        }
+      }
     }
   }
-  return false;
+  return result;
 }
 
 
