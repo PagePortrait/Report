@@ -1,7 +1,11 @@
 /**
  * @fileoverview Defines tests for testMediaQueries.
+ * success criterias:
+ * - 'media-widget' should exist;
+ * - if widget is not empty it should contain 'media-data-table';
+ * - rows in 'media-data-table' shoud contain '@media';
+ * - if widget is empty it should contain class '.rule.media-none'.
  */
-
 
 
 /** @const {!RegExp} */ var MEDIA_PATTERN = /@media([^{]*)/;
