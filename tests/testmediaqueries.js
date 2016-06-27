@@ -1,7 +1,14 @@
 /**
  * @fileoverview Defines tests for testMediaQueries.
+ * Success criterias:
+ * - element with id 'media-widget' should exist;
+ * - if widget is not empty it should contain element with id
+ *  'media-data-table';
+ * - rows in 'media-data-table' should contain text string '@media';
+ * - if widget is empty it should contain class '.rule.media-none'.
+ * @see http://google.github.io/styleguide/javascriptguide.xml
+ * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
-
 
 
 /** @const {!RegExp} */ var MEDIA_PATTERN = /@media([^{]*)/;
