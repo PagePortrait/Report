@@ -4,7 +4,7 @@
  * - 'content-technology-container' should exist;
  * - result table 'technology-data-table' or element with class 'rule true'
  *  should exist;
- * - result table should contain technology name and a counter;
+ * - result table should contain technology name and a counter.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
