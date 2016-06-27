@@ -14,7 +14,8 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testCanonicalization() {
-  /** @type {string} */ var elements = ['canonical-url', 'canonical-ip'];
+  /** @type {Array.<string>} */ 
+  var elements = ['canonical-url', 'canonical-ip'];
   /** @type {number} */ var length = elements.length;
   /** @type {Element} */ var element;
   /** @type {Element} */ var passClass;
@@ -30,14 +31,13 @@ function testCanonicalization() {
     }
 
     if (passClass.style.display == 'block' &&
-        failClass.style.display != 'none' && 
-        passClass.textContent.trim() != 'Yes') {
+        failClass.style.display != 'none') {
       return true;
     }
 
     if (getComputedStyle(passClass).getPropertyValue('display') == 'none' &&
         getComputedStyle(failClass).getPropertyValue('display') !=
-        'inline-block' && failClass.textContent.trim() != 'No') {
+        'inline-block') {
       return true;
     }
   }
