@@ -1,15 +1,17 @@
 /**
  * @fileoverview Defines tests for microdata widget.
- * success criterias:
- * - 'microdata-container' shoud exist and contains ul>li;
- * - 'widget-subheader' class shuold have 'Found Number errors and
- *   Number warnings out of Number items.' expression;
+ * Success criterias:
+ * - 'microdata-container' should exist and contain ul>li;
+ * - 'widget-subheader' class should have inner text that matches regular
+ *  expression;
  * - if widget is empty 'no-data' class should exist.
+ * @see http://google.github.io/styleguide/javascriptguide.xml
+ * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 
 /** @const {!RegExp} */ var PATTERN = new RegExp('\\w*\\s[0-9]*\\s\\w*\\s\\w*' +
-    '\\s[0-9]*\\s\\w*\\s\\w*\\s\\w*\\s[0-9]*\\s\\w*\\.', 'gmi');
+    '\\s[0-9]*\\s(\\w*\\s){3}[0-9]*\\s\\w*\\.', 'gmi');
 
 
 /**
