@@ -31,7 +31,7 @@ function testMediaQueries() {
   }
 
   if (table) {
-    rows = element.getElementsByTagName('TR');
+    rows = element.getElementsByTagName('tr');
     length = rows.length;
 
     for (; length;) {
