@@ -1,6 +1,9 @@
 /**
  * @fileoverview Defines tests for audience engagement.
- *
+ * Success criterias:
+ * - each element from (nodes) array should exist;
+ * - content of the array element should exist and match the PATTERN;
+ * - content of the array element can't be equal to 'N/A'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
