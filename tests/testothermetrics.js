@@ -28,6 +28,7 @@ function testOtherMetrics() {
     /** @type {function(string):boolean} */ var validator = VALIDATORS[metric];
 
     if (!content || !validator(content)) {
+      console.log('[othermetrics]', metric, content);
       return true;
     }
   }
