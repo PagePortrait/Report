@@ -2,8 +2,8 @@
  * @fileoverview Defines tests for Technology Extractor widget.
  * Success criterias:
  * - element with id 'content-technology-container' should exist;
- * - result table with id 'technology-data-table' or element with class 'rule
- *  true' should exist;
+ * - result table with id 'technology-data-table' or element with class
+ *  'rule true' should exist;
  * - result table should contain string with technology name and a counter.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
