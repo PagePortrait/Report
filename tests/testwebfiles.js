@@ -17,20 +17,6 @@
 
 
 /**
- * Waits when data will be loaded.
- */
-function waitLoading() {
-  /** @type {Element} */
-  var container = document.getElementById('webfiles-container');
-  /** @type {string} */
-  var header = container.querySelectorAll('h3').textContent;
-  while (!header) {
-    setTimeout(testWebFiles, 3000);
-  }
-}
-
-
-/**
  * @return {boolean} Returns 'true' if test failed.
  */
 function testWebFiles() {
