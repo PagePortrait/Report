@@ -1,12 +1,12 @@
 /**
  * @fileoverview Defines tests for URL and IP canonalization.
  * Successful criteria:
- * - canonicalization widget should exist;
- * - widget should contain elements with 'canonical-url' and
+ * - Canonicalization widget should exist;
+ * - Widget should contain elements with 'canonical-url' and
  *   'canonical-ip' id's;
- * - tag with "passElement" should contain inner text "Yes" and have style
+ * - Tag with "passElement" should contain inner text "Yes" and have style
  *   "display: none";
- * - tag with "failDisplay" should contain inner text "No" and have style
+ * - Tag with "failDisplay" should contain inner text "No" and have style
  *   "display: block" or "display: inline-block".
  */
 
