@@ -7,7 +7,7 @@
  * - Element with id "toggle widgets" should exists in options button menu;
  * - On click on toggle button all expandable widgets should be expanded;
  * - On second click on toggle button all expandable widgets should be
- * - collapsed;
+ *   collapsed;
  */
 
 
