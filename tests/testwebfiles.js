@@ -23,7 +23,7 @@
  * @return {boolean} Returns 'true' if test failed.
  */
 function testWebFiles() {
-  /** @type {boolean} */ var result = true;
+  /** @type {boolean} */ var result = false;
   /** @type {Element} */
   var container = document.getElementById('webfiles-container');
   /** @type {NodeList} */
@@ -39,12 +39,11 @@ function testWebFiles() {
         text = elements[--length].textContent.trim();
         code = +text.split(': ')[1];
         if (!isNaN(code) || ~HTTP_STATUS_CODES.indexOf(code)) {
-          return false;
+          return result;
         }
       }
     }
   }
-  return result;
 }
 
 
