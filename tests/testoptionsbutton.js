@@ -31,8 +31,7 @@ function testOptionsButton() {
   if (optionsButton && buttonClosed && toggleButton) {
     if (optionsButton.dispatchEvent(new Event('click'))) {
       toggleButton.dispatchEvent(new Event('click'));
-      /** @type {Array|NodeList} */
-      var expanded = document.getElementsByClassName('expanded');
+      expanded = document.getElementsByClassName('expanded');
       if (expanded) {
         toggleButton.dispatchEvent(new Event('click'));
         if (!expanded.lengt) {
