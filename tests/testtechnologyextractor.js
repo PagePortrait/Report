@@ -17,6 +17,7 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testTechnologyExtractor() {
+  /** @type {boolean} */ var result = false;
   /** @type {Element} */
   var element = document.getElementById('content-technology-container');
   /** @type {Element} */
@@ -30,26 +31,17 @@ function testTechnologyExtractor() {
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var content;
 
-  if (parentNode && ~parentNode.className.indexOf('true') &&
-      elements.length) {
-    return true;
-  }
 
-  if (table) {
+  if (element && table || failClass) {
     for (; length;) {
       cells = elements[--length].querySelectorAll('th,td');
       content = cells[1].textContent.trim();
-
       if (!(cells[0].textContent.trim() &&
-          (PATTERN.test(content) || 'N/A' == content))) {
-        return false;
+          (PATTERN.test(content) || content == 'N/A'))) {
+        return result;
       }
     }
-  } else if (!failClass) {
-    return true;
   }
-
-  return false;
 }
 
 
