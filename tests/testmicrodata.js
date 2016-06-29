@@ -33,9 +33,7 @@ function testMicrodata() {
   var noData = widget.querySelector('.no-data');
   subheader = subheader.replace(/\s+/g, ' ');
 
-  if (content && PATTERN.test(subheader) && listItems) {
-    return result;
-  } else if (noData) {
+  if (content && PATTERN.test(subheader) && listItems || noData) {
     return result;
   }
 }
