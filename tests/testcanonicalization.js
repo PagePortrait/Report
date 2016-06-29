@@ -32,17 +32,15 @@ function testCanonicalization() {
       if (passElement && failElement) {
         passDisplay = getComputedStyle(passElement).getPropertyValue('display');
         failDisplay = getComputedStyle(failElement).getPropertyValue('display');
-        if (passDisplay == 'none' && (failDisplay == 'inline-block' ||
-            failDisplay == 'block')) {
-          return result;
-        } else if (passDisplay != 'none' && failDisplay == 'none') {
+        if ((passDisplay == 'none' && (failDisplay == 'inline-block' ||
+            failDisplay == 'block')) || (passDisplay != 'none' &&
+            failDisplay == 'none')) {
           return result;
         }
       }
     }
   }
 }
-
 
 // Export for phantomjs.
 /** @type {!function():boolean} */
