@@ -1,12 +1,11 @@
 /**
  * @fileoverview Defines tests for web files.
- *
- * @see http://google.github.io/styleguide/javascriptguide.xml
- * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  * Successful criteria:
  * - Web Files widget should exist;
  * - Elements "h4" should exist in web files;
  * - In "h4" should be HTTP status code and its type should number.
+ * @see http://google.github.io/styleguide/javascriptguide.xml
+ * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 
