@@ -1,6 +1,6 @@
 /**
  * @fileoverview Defines tests for URL and IP canonalization.
- * Successful criteria:
+ * Successful criterias:
  * - Canonicalization widget should exist;
  * - Widget should contain elements with 'canonical-url' and
  *   'canonical-ip' id's;
