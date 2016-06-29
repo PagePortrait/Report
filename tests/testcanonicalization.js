@@ -42,6 +42,7 @@ function testCanonicalization() {
   }
 }
 
+
 // Export for phantomjs.
 /** @type {!function():boolean} */
 window.testcanonicalization = testCanonicalization;
