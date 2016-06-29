@@ -1,12 +1,12 @@
 /**
  * @fileoverview Defines tests for options button.
- * Successful criteria: 
+ * Successful criteria:
  * - Options button should exist;
  * - Options button menu should be closed by default;
  * - Options button should be clickable;
- * - Element with id "toggle widgets" should exists in options button menu; 
+ * - Element with id "toggle widgets" should exists in options button menu;
  * - On click on toggle button all expandable widgets should be expanded;
- * - On second click on toggle button all expandable widgets should be 
+ * - On second click on toggle button all expandable widgets should be
  * - collapsed;
  */
 
@@ -34,7 +34,7 @@ function testOptionsButton() {
       if (optionsButton.dispatchEvent(new Event('click'))) {
         if (toggleButton) {
           toggleButton.dispatchEvent(new Event('click'));
-          /** @type {Array|NodeList} */ 
+          /** @type {Array|NodeList} */
           var expanded = document.getElementsByClassName('expanded');
           if (expandable.length = expanded.length) {
             toggleButton.dispatchEvent(new Event('click'));
@@ -46,7 +46,7 @@ function testOptionsButton() {
       }
     }
   }
-  
+
   return result;
 }
 
