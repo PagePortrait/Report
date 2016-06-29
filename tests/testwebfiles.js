@@ -1,6 +1,6 @@
 /**
  * @fileoverview Defines tests for web files.
- * Successful criteria:
+ * Successful criterias:
  * - Web Files widget should exist;
  * - Elements "h4" should exist in web files;
  * - In "h4" should be HTTP status code and its type should number.
