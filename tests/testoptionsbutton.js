@@ -1,13 +1,13 @@
 /**
  * @fileoverview Defines tests for options button.
- * Successful criteria:
+ * Successful criterias:
  * - Options button should exist;
  * - Options button menu should be closed by default;
  * - Options button should be clickable;
  * - Element with id "toggle widgets" should exists in options button menu;
  * - On click on toggle button all expandable widgets should be expanded;
  * - On second click on toggle button all expandable widgets should be
- *   collapsed;
+ *   collapsed.
  */
 
 
