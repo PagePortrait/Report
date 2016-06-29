@@ -15,7 +15,7 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testOptionsButton() {
-  /** @type {boolean} */ var result = true;
+  /** @type {boolean} */ var result = false;
   /** @type {Node} */
   var optionsButton = document.querySelector('.report-actions');
   /** @type {Node} */
@@ -28,26 +28,19 @@ function testOptionsButton() {
   var expandable = document.getElementsByClassName('is-expandable');
   /** @type {Array|NodeList} */ var expanded;
 
-  // Check if options button exists.
-  if (optionsButton) {
-    if (buttonClosed) {
-      if (optionsButton.dispatchEvent(new Event('click'))) {
-        if (toggleButton) {
-          toggleButton.dispatchEvent(new Event('click'));
-          /** @type {Array|NodeList} */
-          var expanded = document.getElementsByClassName('expanded');
-          if (expandable.length = expanded.length) {
-            toggleButton.dispatchEvent(new Event('click'));
-            if (!expanded.length) {
-              return false;
-            }
-          }
+  if (optionsButton && buttonClosed && toggleButton) {
+    if (optionsButton.dispatchEvent(new Event('click'))) {
+      toggleButton.dispatchEvent(new Event('click'));
+      /** @type {Array|NodeList} */
+      var expanded = document.getElementsByClassName('expanded');
+      if (expanded) {
+        toggleButton.dispatchEvent(new Event('click'));
+        if (!expanded.lengt) {
+          return result;
         }
       }
     }
   }
-
-  return result;
 }
 
 
