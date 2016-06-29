@@ -1,10 +1,10 @@
 /**
  * @fileoverview Defines tests for microdata widget.
  * Success criterias:
- * - 'microdata-container' should exist and contain ul>li;
- * - 'widget-subheader' class should have inner text that matches regular
- *  expression;
- * - if widget is empty 'no-data' class should exist.
+ * - Element with id 'microdata-container' should exist and contain ul>li;
+ * - Element with class 'widget-subheader' should have inner text that matches 
+ *   regular expression;
+ * - If widget is empty element with class 'no-data' should exist.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
