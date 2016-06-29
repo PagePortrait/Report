@@ -1,5 +1,13 @@
 /**
  * @fileoverview Defines tests for options button.
+ * Successful criteria: 
+ * - Options button should exist;
+ * - Options button menu should be closed by default;
+ * - Options button should be clickable;
+ * - Element with id "toggle widgets" should exists in options button menu; 
+ * - On click on toggle button all expandable widgets should be expanded;
+ * - On second click on toggle button all expandable widgets should be 
+ * - collapsed;
  */
 
 
@@ -7,54 +15,39 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testOptionsButton() {
+  /** @type {boolean} */ var result = true;
   /** @type {Node} */
   var optionsButton = document.querySelector('.report-actions');
   /** @type {Node} */
   var element = document.querySelector('.report-actions > li');
   /** @type {Element} */
-  var isClosed = element && element.getElementsByClassName('closed');
+  var buttonClosed = element && element.getElementsByClassName('closed');
   /** @type {Element} */
-  var toggle = document.getElementById('toggle-widgets-view');
+  var toggleButton = document.getElementById('toggle-widgets-view');
   /** @type {Array|NodeList} */
   var expandable = document.getElementsByClassName('is-expandable');
   /** @type {Array|NodeList} */ var expanded;
 
   // Check if options button exists.
-  if (!optionsButton) {
-    return true;
+  if (optionsButton) {
+    if (buttonClosed) {
+      if (optionsButton.dispatchEvent(new Event('click'))) {
+        if (toggleButton) {
+          toggleButton.dispatchEvent(new Event('click'));
+          /** @type {Array|NodeList} */ 
+          var expanded = document.getElementsByClassName('expanded');
+          if (expandable.length = expanded.length) {
+            toggleButton.dispatchEvent(new Event('click'));
+            if (!expanded.length) {
+              return false;
+            }
+          }
+        }
+      }
+    }
   }
-
-  // Check if options menu is closed by default.
-  if (!isClosed) {
-    return true;
-  }
-
-  // Check if options button is clickable.
-  if (!optionsButton.dispatchEvent(new Event('click'))) {
-    return true;
-  }
-
-  // Check if "toggle widgets" option exist in menu.
-  if (!toggle) {
-    return true;
-  }
-
-  toggle.dispatchEvent(new Event('click'));
-  expanded = document.getElementsByClassName('expanded');
-
-  // Check if after click on toggle all expandable widgets was expanded.
-  if (expandable.length != expanded.length) {
-    return true;
-  }
-
-  toggle.dispatchEvent(new Event('click'));
-
-  // Check if after second click on toggle all expanded widgets was collapsed.
-  if (expanded.length) {
-    return true;
-  }
-
-  return false;
+  
+  return result;
 }
 
 
