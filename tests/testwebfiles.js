@@ -33,14 +33,12 @@ function testWebFiles() {
   /** @type {string} */ var text;
 
 
-  if (container) {
-    if (length) {
-      for (; length;) {
-        text = elements[--length].textContent.trim();
-        code = +text.split(': ')[1];
-        if (!isNaN(code) || ~HTTP_STATUS_CODES.indexOf(code)) {
-          return result;
-        }
+  if (container && length) {
+    for (; length;) {
+      text = elements[--length].textContent.trim();
+      code = +text.split(': ')[1];
+      if (!isNaN(code) || ~HTTP_STATUS_CODES.indexOf(code)) {
+        return result;
       }
     }
   }
