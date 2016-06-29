@@ -18,7 +18,7 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testMicrodata() {
-  /** @type {boolean} */ var result = true;
+  /** @type {boolean} */ var result =false;
   /** @type {Element} */
   var widget = document.getElementById('microdata-container');
   /** @type {Node} */
@@ -33,17 +33,11 @@ function testMicrodata() {
   var noData = widget.querySelector('.no-data');
   subheader = subheader.replace(/\s+/g, ' ');
 
-  if (content) {
-    if (PATTERN.test(subheader)) {
-      if (listItems) {
-        return false;
-      } else if (noData) {
-        return false;
-      }
-    }
+  if (content && PATTERN.test(subheader) && listItems) {
+    return result;
+  } else if (noData) {
     return result;
   }
-
 }
 
 
