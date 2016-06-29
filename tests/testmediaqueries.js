@@ -26,23 +26,17 @@ function testMediaQueries() {
   /** @type {NodeList} */ var rows;
   /** @type {number} */ var length;
 
-  if (!element) {
-    return true;
-  }
 
-  if (table) {
+  if (element && table) {
     rows = element.getElementsByTagName('TR');
     length = rows.length;
 
     for (; length;) {
-      if (!MEDIA_PATTERN.test(rows[--length].textContent.trim())) {
-        return true;
+      if (MEDIA_PATTERN.test(rows[--length].textContent.trim()) || rule) {
+        return false;
       }
     }
-  } else if (!rule) {
-    return true;
   }
-  return false;
 }
 
 
