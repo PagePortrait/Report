@@ -31,8 +31,9 @@ function testMicrodata() {
   var listItems = content.querySelector('ul > li');
   /** @type {Node} */
   var noData = widget.querySelector('.no-data');
+  
   subheader = subheader.replace(/\s+/g, ' ');
-
+  
   if (content && PATTERN.test(subheader) && listItems || noData) {
     result = false;
   }
