@@ -1,6 +1,9 @@
 /**
  * @fileoverview Defines tests for web files.
- *
+ * Successful criterias:
+ * - Web Files widget should exist;
+ * - Elements "h4" should exist in web files;
+ * - In "h4" should be HTTP status code and its type should number.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
@@ -17,32 +20,29 @@
 
 
 /**
- * @return {boolean} Returns 'true' if test failed.
+ * @return {boolean} Returns "true" if test failed.
  */
 function testWebFiles() {
-  /** @type {Element} */ var container =
-      document.getElementById('webfiles-container');
-  /** @type {NodeList} */ var elements =
-      container && container.querySelectorAll('h4');
+  /** @type {boolean} */ var result = true;
+  /** @type {Element} */
+  var container = document.getElementById('webfiles-container');
+  /** @type {NodeList} */
+  var elements = container && container.querySelectorAll('h4');
   /** @type {number} */ var length = container && elements.length;
   /** @type {number} */ var code;
   /** @type {string} */ var text;
 
-  if (!length) {
-    console.log('[webfiles] No element to test.');
-    return true;
-  }
 
-  for (; length;) {
-    text = elements[--length].textContent.trim();
-    code = +text.split(': ')[1];
-    if (!code || !~HTTP_STATUS_CODES.indexOf(code)) {
-      console.log('[webfiles]', text, code);
-      return true;
+  if (container && length) {
+    for (; length;) {
+      text = elements[--length].textContent.trim();
+      code = +text.split(': ')[1];
+      if (!isNaN(code) || ~HTTP_STATUS_CODES.indexOf(code)) {
+        result = false;
+      }
     }
   }
-
-  return false;
+  return result;
 }
 
 
