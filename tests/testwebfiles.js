@@ -20,10 +20,10 @@
 
 
 /**
- * @return {boolean} Returns "false" if test passed.
+ * @return {boolean} Returns "true" if test failed.
  */
 function testWebFiles() {
-  /** @type {boolean} */ var result = false;
+  /** @type {boolean} */ var result = true;
   /** @type {Element} */
   var container = document.getElementById('webfiles-container');
   /** @type {NodeList} */
@@ -38,10 +38,11 @@ function testWebFiles() {
       text = elements[--length].textContent.trim();
       code = +text.split(': ')[1];
       if (!isNaN(code) || ~HTTP_STATUS_CODES.indexOf(code)) {
-        return result;
+        result = false;
       }
     }
   }
+  return result;
 }
 
 
