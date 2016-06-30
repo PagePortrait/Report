@@ -20,7 +20,7 @@
 
 
 /**
- * @return {boolean} Returns 'true' if test failed.
+ * @return {boolean} Returns "false" if test passed.
  */
 function testWebFiles() {
   /** @type {boolean} */ var result = false;
