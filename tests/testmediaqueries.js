@@ -38,6 +38,8 @@ function testMediaQueries() {
         break;
       }
     }
+  } else {
+    result = true;
   }
   return result;
 }
