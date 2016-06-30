@@ -13,7 +13,7 @@
 
 
 /**
- * @return {boolean} Returns "false" if test passed.
+ * @return {boolean} Returns "true" if test failed.
  */
 function testAudience() {
   /** @type {!Array.<string>} */ var nodes = [
@@ -28,7 +28,7 @@ function testAudience() {
     'audience-engagement-bounce-rate-delta'
   ];
   /** @type {number} */ var length = nodes.length;
-  /** @type {boolean} */ var result = false;
+  /** @type {boolean} */ var result = true;
   /** @type {Element} */ var element;
   /** @type {string} */ var content;
 
@@ -37,9 +37,10 @@ function testAudience() {
     content = element && element.textContent.trim();
 
     if (content && PATTERN.test(content) && content !== 'N/A') {
-      return result;
+      result = false;
     }
   }
+  return result;
 }
 
 
