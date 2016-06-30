@@ -33,12 +33,12 @@ function testMediaQueries() {
     length = rows.length;
 
     for (; length;) {
-      if (!MEDIA_PATTERN.test(rows[--length].textContent.trim()) && !rule) {
+      if (!MEDIA_PATTERN.test(rows[--length].textContent.trim())) {
         result = true;
         break;
       }
     }
-  } else {
+  } else if (!rule) {
     result = true;
   }
   return result;
