@@ -13,7 +13,7 @@
 
 
 /**
- * @return {boolean} Returns "true" if test failed.
+ * @return {boolean} Returns "false" if test passed.
  */
 function testAudience() {
   /** @type {!Array.<string>} */ var nodes = [
