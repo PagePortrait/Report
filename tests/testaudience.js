@@ -36,7 +36,7 @@ function testAudience() {
     element = document.getElementById(nodes[--length]);
     content = element && element.textContent.trim();
 
-    if (!content || !PATTERN.test(content) || content == 'N/A') {
+    if (!content || !(PATTERN.test(content) || 'N/A' == content)) {
       result = true;
       break;
     }
