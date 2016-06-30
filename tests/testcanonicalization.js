@@ -14,10 +14,10 @@
 
 
 /**
- * @return {boolean} Returns "false" if test passed.
+ * @return {boolean} Returns "true" if test failed.
  */
 function testCanonicalization() {
-  /** @type {boolean} */ var result = false;
+  /** @type {boolean} */ var result = true;
   /** @type {Array.<string>} */ var widgets = ['canonical-url', 'canonical-ip'];
   /** @type {number} */ var length = widgets.length;
   /** @type {Element} */ var element;
@@ -37,11 +37,12 @@ function testCanonicalization() {
         if ((passDisplay == 'none' && (failDisplay == 'inline-block' ||
             failDisplay == 'block')) || (passDisplay != 'none' &&
             failDisplay == 'none')) {
-          return result;
+          result = false;
         }
       }
     }
   }
+  return result;
 }
 
 
