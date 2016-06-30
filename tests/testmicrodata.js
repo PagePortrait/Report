@@ -15,10 +15,10 @@
 
 
 /**
- * @return {boolean} Returns "false" if test passed.
+ * @return {boolean} Returns "true" if test failed.
  */
 function testMicrodata() {
-  /** @type {boolean} */ var result = false;
+  /** @type {boolean} */ var result = true;
   /** @type {Element} */
   var widget = document.getElementById('microdata-container');
   /** @type {Node} */
@@ -34,8 +34,9 @@ function testMicrodata() {
   subheader = subheader.replace(/\s+/g, ' ');
 
   if (content && PATTERN.test(subheader) && listItems || noData) {
-    return result;
+    result = false;
   }
+  return result;
 }
 
 
