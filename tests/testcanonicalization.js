@@ -18,31 +18,38 @@
  */
 function testCanonicalization() {
   /** @type {boolean} */ var result = false;
-  /** @type {Array.<string>} */ var widgets = ['canonical-url', 'canonical-ip'];
-  /** @type {number} */ var length = widgets.length;
+  /** @type {Element} */
+  var widget = document.getElementsByClassName('widget-canonical-url')[0];
+  /** @type {Array.<string>} */ var rows = ['canonical-url', 'canonical-ip'];
+  /** @type {number} */ var length = rows.length;
   /** @type {Element} */ var element;
   /** @type {Element} */ var passElement;
   /** @type {Element} */ var failElement;
   /** @type {Element} */ var passDisplay;
   /** @type {Element} */ var failDisplay;
 
-  for (; length;) {
-    element = document.getElementById(widgets[--length]);
-    if (element) {
-      passElement = element.getElementsByClassName('pass')[0];
-      failElement = element.getElementsByClassName('fail')[0];
-      if (passElement && failElement) {
-        passDisplay = getComputedStyle(passElement).getPropertyValue('display');
-        failDisplay = getComputedStyle(failElement).getPropertyValue('display');
-        if ((passDisplay == 'none' && (failDisplay !== 'inline-block' &&
-            failDisplay !== 'block')) || (passDisplay != 'none' &&
-            failDisplay !== 'none')) {
-          result = true;
-          break;
+  if (widget) {
+    for (; length;) {
+      element = document.getElementById(rows[--length]);
+      if (element) {
+        passElement = element.getElementsByClassName('pass')[0];
+        failElement = element.getElementsByClassName('fail')[0];
+        if (passElement && failElement) {
+          passDisplay = getComputedStyle(passElement).getPropertyValue('display');
+          failDisplay = getComputedStyle(failElement).getPropertyValue('display');
+          if ((passDisplay == 'none' && (failDisplay !== 'inline-block' &&
+              failDisplay !== 'block')) || (passDisplay != 'none' &&
+              failDisplay !== 'none')) {
+            result = true;
+            break;
+          }
         }
       }
     }
+  } else {
+    result = true;
   }
+
   return result;
 }
 
