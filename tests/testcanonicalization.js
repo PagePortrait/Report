@@ -37,9 +37,9 @@ function testCanonicalization() {
         if (passElement && failElement) {
           passDisplay = getComputedStyle(passElement).getPropertyValue('display');
           failDisplay = getComputedStyle(failElement).getPropertyValue('display');
-          if ((passDisplay == 'none' && (failDisplay !== 'inline-block' &&
+          if ((passDisplay == 'none' && (failDisplay !== 'inline-block' ||
               failDisplay !== 'block')) || (passDisplay != 'none' &&
-              failDisplay !== 'none')) {
+              failDisplay == 'none')) {
             result = true;
             break;
           }
