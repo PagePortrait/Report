@@ -8,6 +8,8 @@
  *   "display: none";
  * - Tag with "failDisplay" should contain inner text "No" and have style
  *   "display: block" or "display: inline-block".
+ * @see http://google.github.io/styleguide/javascriptguide.xml
+ * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 
