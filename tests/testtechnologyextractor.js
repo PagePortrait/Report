@@ -14,7 +14,7 @@
 
 
 /**
- * @return {boolean} Returns "true" if test failed..
+ * @return {boolean} Returns "true" if test failed.
  */
 function testTechnologyExtractor() {
   /** @type {boolean} */ var result = true;
@@ -23,31 +23,29 @@ function testTechnologyExtractor() {
   /** @type {Element} */
   var table = document.getElementById('technology-data-table');
   /** @type {Element} */
-  var failClass = element.getElementsByClassName('rule true');
+  var failClass = element && element.getElementsByClassName('rule true');
   /** @type {NodeList} */
-  var elements = element.getElementsByTagName('tr') ;
-  /** @type {number} */ var length = elements.length;
+  var elements = element && element.getElementsByTagName('tr');
+  /** @type {number} */ var length = element && elements.length;
+  /** @type {number} */ var index = 0;
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var content;
 
 
-  if (element && table) {
-    for (; length;) {
-      console.log(2);
-      cells = elements[length--].querySelectorAll('th,td');
-      console.log(cells);
+  if (element && table && length) {
+    for (; index < length; index++) {
+      cells = elements[index].querySelectorAll('th,td');
       content = cells[1].textContent.trim();
-      console.log(content);
+
       if (!(cells[0].textContent.trim() &&
-          (PATTERN.test(content) || 'N/A' !== content))) {
-            console.log(3);
+          (PATTERN.test(content) || 'N/A' == content))) {
         result = false;
       }
     }
-  }
-  if (failClass) {
+  } else if (failClass) {
     result = false;
   }
+
   return result;
 }
 
