@@ -28,7 +28,7 @@ function testAudience() {
     'audience-engagement-bounce-rate-delta'
   ];
   /** @type {number} */ var length = nodes.length;
-  /** @type {boolean} */ var result = true;
+  /** @type {boolean} */ var result = false;
   /** @type {Element} */ var element;
   /** @type {string} */ var content;
 
@@ -36,8 +36,9 @@ function testAudience() {
     element = document.getElementById(nodes[--length]);
     content = element && element.textContent.trim();
 
-    if (content && PATTERN.test(content) && content !== 'N/A') {
-      result = false;
+    if (!content || !PATTERN.test(content) || content == 'N/A') {
+      result = true;
+      break;
     }
   }
   return result;
