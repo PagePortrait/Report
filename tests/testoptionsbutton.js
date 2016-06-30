@@ -8,6 +8,8 @@
  * - On click on toggle button all expandable widgets should be expanded;
  * - On second click on toggle button all expandable widgets should be
  *   collapsed.
+ * @see http://google.github.io/styleguide/javascriptguide.xml
+ * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 
