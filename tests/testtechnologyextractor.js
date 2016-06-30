@@ -25,22 +25,17 @@ function testTechnologyExtractor() {
   /** @type {Element} */
   var failClass = element.getElementsByClassName('rule true');
   /** @type {NodeList} */
-  var elements = element.getElementsByTagName('tr');
-  /** @type {Node} */ var parentNode = table && table.parentNode;
+  var elements = element.getElementsByTagName('tr') ;
   /** @type {number} */ var length = elements.length;
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var content;
 
-  console.log(element, 'elem');
-  console.log(table, 'tab');
-  console.log(failClass, 'failClass');
-  console.log(elements);
-  console.log(length);
-  if (element && table || failClass) {
-    console.log(1);
+
+  if (element && table) {
     for (; length;) {
       console.log(2);
       cells = elements[length--].querySelectorAll('th,td');
+      console.log(cells);
       content = cells[1].textContent.trim();
       console.log(content);
       if (!(cells[0].textContent.trim() &&
@@ -49,6 +44,9 @@ function testTechnologyExtractor() {
         result = false;
       }
     }
+  }
+  if (failClass) {
+    result = false;
   }
   return result;
 }
