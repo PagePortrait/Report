@@ -3,7 +3,6 @@
  */
 
 
-
 /** @const {!RegExp} */ var MEDIA_PATTERN = /@media([^{]*)/;
 /** @const {string} */ var CSS_RULE = '.rule.media-none';
 /** @const {string} */ var TABLE_ID = 'media-data-table';
