@@ -17,7 +17,7 @@
 
 
 /**
- * @return {boolean} Returns "true" if test failed.
+ * @return {boolean} Returns "false" if test passed.
  */
 function testMediaQueries() {
   /** @type {boolean} */ var result = false;
