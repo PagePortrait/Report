@@ -14,7 +14,7 @@
 
 
 /**
- * @return {boolean} Returns "true" if test failed.
+ * @return {boolean} Returns "false" if test passed.
  */
 function testTechnologyExtractor() {
   /** @type {boolean} */ var result = false;
