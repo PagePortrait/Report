@@ -15,7 +15,7 @@
 
 
 /**
- * @return {boolean} Returns "true" if test failed.
+ * @return {boolean} Returns "false" if test passed.
  */
 function testMicrodata() {
   /** @type {boolean} */ var result = false;
