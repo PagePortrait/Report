@@ -17,7 +17,7 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testOptionsButton() {
-  /** @type {boolean} */ var result = false;
+  /** @type {boolean} */ var result = true;
   /** @type {Node} */
   var optionsButton = document.querySelector('.report-actions');
   /** @type {Node} */
@@ -37,11 +37,12 @@ function testOptionsButton() {
       if (expanded) {
         toggleButton.dispatchEvent(new Event('click'));
         if (!expanded.length) {
-          return result;
+          result = false;
         }
       }
     }
   }
+  return result;
 }
 
 
