@@ -18,7 +18,7 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testMicrodata() {
-  /** @type {boolean} */ var result =false;
+  /** @type {boolean} */ var result = false;
   /** @type {Element} */
   var widget = document.getElementById('microdata-container');
   /** @type {Node} */
