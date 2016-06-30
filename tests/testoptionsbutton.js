@@ -34,7 +34,7 @@ function testOptionsButton() {
       expanded = document.getElementsByClassName('expanded');
       if (expanded) {
         toggleButton.dispatchEvent(new Event('click'));
-        if (!expanded.lengt) {
+        if (!expanded.length) {
           return result;
         }
       }
