@@ -35,13 +35,13 @@ function testCanonicalization() {
         passElement = element.getElementsByClassName('pass')[0];
         failElement = element.getElementsByClassName('fail')[0];
         if (passElement && failElement) {
-          passDisplay = getComputedStyle(passElement).getPropertyValue('display');
-          failDisplay = getComputedStyle(failElement).getPropertyValue('display');
-          console.log(passDisplay, failDisplay);
+          passDisplay =
+              getComputedStyle(passElement).getPropertyValue('display');
+          failDisplay =
+              getComputedStyle(failElement).getPropertyValue('display');
           if ((passDisplay == 'none' && (failDisplay !== 'inline-block' &&
               failDisplay !== 'block')) || (passDisplay != 'none' &&
-              failDisplay == 'none')) {
-                console.log(1);
+              failDisplay != 'none')) {
             result = true;
             break;
           }
