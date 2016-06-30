@@ -3,9 +3,9 @@
  * Success criterias:
  * - Element with id 'media-widget' should exist;
  * - If widget is not empty it should contain element with id
- *  'media-data-table';
+ *   'media-data-table';
  * - Rows in 'media-data-table' should contain text string '@media';
- * - If widget is empty it should contain class '.rule.media-none'.
+ * - If widget is empty it should contain classes '.rule.media-none'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
