@@ -14,10 +14,10 @@
 
 
 /**
- * @return {boolean} Returns "false" if test passed.
+ * @return {boolean} Returns "true" if test failed..
  */
 function testTechnologyExtractor() {
-  /** @type {boolean} */ var result = false;
+  /** @type {boolean} */ var result = true;
   /** @type {Element} */
   var element = document.getElementById('content-technology-container');
   /** @type {Element} */
@@ -38,10 +38,11 @@ function testTechnologyExtractor() {
       content = cells[1].textContent.trim();
       if (!(cells[0].textContent.trim() &&
           (PATTERN.test(content) || content == 'N/A'))) {
-        return result;
+        result = false;
       }
     }
   }
+  return result;
 }
 
 
