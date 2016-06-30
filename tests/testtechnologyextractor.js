@@ -2,8 +2,8 @@
  * @fileoverview Defines tests for Technology Extractor widget.
  * Success criterias:
  * - Element with id 'content-technology-container' should exist;
- * - Result table with id 'technology-data-table' or element with class
- *  'rule true' should exist;
+ * - Result table with id 'technology-data-table' or element with classes
+ *   'rule true' should exist;
  * - Result table should contain string with technology name and a counter.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
@@ -23,21 +23,29 @@ function testTechnologyExtractor() {
   /** @type {Element} */
   var table = document.getElementById('technology-data-table');
   /** @type {Element} */
-  var failClass = element && element.getElementsByClassName('rule true');
+  var failClass = element.getElementsByClassName('rule true');
   /** @type {NodeList} */
-  var elements = element && element.getElementsByTagName('tr');
+  var elements = element.getElementsByTagName('tr');
   /** @type {Node} */ var parentNode = table && table.parentNode;
-  /** @type {number} */ var length = element && elements.length;
+  /** @type {number} */ var length = elements.length;
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var content;
 
-
+  console.log(element, 'elem');
+  console.log(table, 'tab');
+  console.log(failClass, 'failClass');
+  console.log(elements);
+  console.log(length);
   if (element && table || failClass) {
+    console.log(1);
     for (; length;) {
-      cells = elements[--length].querySelectorAll('th,td');
+      console.log(2);
+      cells = elements[length--].querySelectorAll('th,td');
       content = cells[1].textContent.trim();
+      console.log(content);
       if (!(cells[0].textContent.trim() &&
-          (PATTERN.test(content) || content == 'N/A'))) {
+          (PATTERN.test(content) || 'N/A' !== content))) {
+            console.log(3);
         result = false;
       }
     }
