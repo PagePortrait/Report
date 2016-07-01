@@ -2,12 +2,12 @@
  * @fileoverview Defines tests for URL and IP canonalization.
  * Successful criterias:
  * - Canonicalization widget should exist;
- * - Widget should contain elements with "canonical-url" and
- *   "canonical-ip" id's;
- * - Tag with "passElement" should contain inner text "Yes" and have style
- *   "display: none";
- * - Tag with "failDisplay" should contain inner text "No" and have style
- *   "display: block" or "display: inline-block".
+ * - Widget should contain elements with 'canonical-url' and
+ *   'canonical-ip' id's;
+ * - Tag with "passElement" should contain inner text 'Yes' and have style
+ *   'display: none';
+ * - Tag with 'failDisplay' should contain inner text 'No' and have style
+ *   'display: block' or 'display: inline-block'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
