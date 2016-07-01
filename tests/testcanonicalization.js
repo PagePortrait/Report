@@ -4,7 +4,7 @@
  * - Canonicalization widget should exist;
  * - Widget should contain elements with 'canonical-url' and
  *   'canonical-ip' id's;
- * - Tag with "passElement" should contain inner text 'Yes' and have style
+ * - Tag with 'passElement' should contain inner text 'Yes' and have style
  *   'display: none';
  * - Tag with 'failDisplay' should contain inner text 'No' and have style
  *   'display: block' or 'display: inline-block'.
