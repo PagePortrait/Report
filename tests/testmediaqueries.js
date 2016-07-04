@@ -22,8 +22,8 @@
  */
 function testMediaQueries() {
   /** @type {Element} */ var element = document.getElementById(WIDGET);
-  /** @type {Element} */ var rule = element && element.querySelector(CSS_RULE);
-  /** @type {boolean} */ var result = !rule;
+  /** @type {boolean} */
+  var result = !(element && element.querySelector(CSS_RULE));
   /** @type {Element} */ var table = document.getElementById(TABLE_ID);
   /** @type {NodeList} */ var rows;
   /** @type {number} */ var length;
