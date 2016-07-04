@@ -2,7 +2,7 @@
  * @fileoverview Defines tests for microdata widget.
  * Success criterias:
  * - Element with id 'microdata-container' should exist and contain ul>li;
- * - Element with class 'widget-subheader' should have inner text that matches 
+ * - Element with class 'widget-subheader' should have inner text that matches
  *   regular expression;
  * - If widget is empty element with class 'no-data' should exist.
  * @see http://google.github.io/styleguide/javascriptguide.xml
@@ -12,6 +12,7 @@
 
 /** @const {!RegExp} */ var PATTERN = new RegExp('\\w*\\s[0-9]*\\s\\w*\\s\\w*' +
     '\\s[0-9]*\\s(\\w*\\s){3}[0-9]*\\s\\w*\\.', 'gmi');
+/** @const {string} */ var WIDGET = 'microdata-container';
 
 
 /**
@@ -20,7 +21,7 @@
 function testMicrodata() {
   /** @type {boolean} */ var result = true;
   /** @type {Element} */
-  var widget = document.getElementById('microdata-container');
+  var widget = document.getElementById(WIDGET);
   /** @type {Node} */
   var subheader = widget.querySelector('.widget-subheader').textContent;
   /** @type {Node} */
@@ -31,9 +32,9 @@ function testMicrodata() {
   var listItems = content.querySelector('ul > li');
   /** @type {Node} */
   var noData = widget.querySelector('.no-data');
-  
+
   subheader = subheader.replace(/\s+/g, ' ');
-  
+
   if (content && PATTERN.test(subheader) && listItems || noData) {
     result = false;
   }
