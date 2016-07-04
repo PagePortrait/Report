@@ -13,14 +13,19 @@
  */
 
 
+/** @const {string} */ var PASS = 'pass';
+/** @const {string} */ var FAIL = 'fail';
+/** @const {string} */ var WIDGET = 'widget-canonical-url';
+/** @const {string} */ var CANONICAL_IP = 'canonical-ip';
+/** @const {string} */ var CANONICAL_URL = 'canonical-url';
+
+
 /**
  * @return {boolean} Returns "true" if test failed.
  */
 function testCanonicalization() {
   /** @type {boolean} */ var result = false;
-  /** @type {Element} */
-  var widget = document.getElementsByClassName('widget-canonical-url')[0];
-  /** @type {Array.<string>} */ var rows = ['canonical-url', 'canonical-ip'];
+  /** @type {Array.<string>} */ var rows = [CANONICAL_URL, CANONICAL_IP];
   /** @type {number} */ var length = rows.length;
   /** @type {Element} */ var element;
   /** @type {Element} */ var passElement;
@@ -28,12 +33,12 @@ function testCanonicalization() {
   /** @type {Element} */ var passDisplay;
   /** @type {Element} */ var failDisplay;
 
-  if (widget) {
+  if (document.getElementsByClassName(WIDGET)) {
     for (; length;) {
       element = document.getElementById(rows[--length]);
       if (element) {
-        passElement = element.getElementsByClassName('pass')[0];
-        failElement = element.getElementsByClassName('fail')[0];
+        passElement = element.getElementsByClassName(PASS)[0];
+        failElement = element.getElementsByClassName(FAIL)[0];
         if (passElement && failElement) {
           passDisplay =
               getComputedStyle(passElement).getPropertyValue('display');
