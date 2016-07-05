@@ -1,5 +1,5 @@
 /**
- * @fileoverview Defines tests for Media Queries widget.
+ * @fileoverview Defines test for Media Queries widget.
  * Success criterias:
  * - Element with id 'media-widget' should exist;
  * - If widget is not empty it should contain element with id
