@@ -22,9 +22,9 @@
  */
 function testMediaQueries() {
   /** @type {Element} */ var element = document.getElementById(WIDGET);
+  /** @type {Element} */ var table = document.getElementById(TABLE_ID);
   /** @type {boolean} */
   var result = !(element && element.querySelector(CSS_RULE));
-  /** @type {Element} */ var table = document.getElementById(TABLE_ID);
   /** @type {NodeList} */ var rows;
   /** @type {number} */ var length;
 
@@ -34,6 +34,9 @@ function testMediaQueries() {
     for (; length;) {
       if (MEDIA_PATTERN.test(rows[--length].textContent.trim())) {
         result = false;
+      } else {
+        result = true;
+        break;
       }
     }
   }
