@@ -26,7 +26,7 @@ function testMediaQueries() {
   /** Element with id 'media-widget' should exist. */
   /** @type {Element} */ var table = document.getElementById(TABLE_ID);
   /** @type {boolean} */
-  var result = element && element.querySelector(CSS_RULE) && table;
+  var result = element && element.querySelector(CSS_RULE) && !table;
   /** If widget is empty it should contain classes '.rule.media-none' and
       shouldn't containe 'media-data-table'. */
   /** @type {NodeList} */ var rows;
