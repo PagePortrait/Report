@@ -24,32 +24,35 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testMediaQueries() {
+  // Element with ID 'media-widget' should exist.
   /** @type {Element} */ var element = document.getElementById(WIDGET_ID);
-  /** Element with ID 'media-widget' should exist. */
+
+  // Element with ID 'media-widget' should contain element
+  // with ID 'media-data-table'.
   /** @type {Element} */ var table = document.getElementById(TABLE_ID);
-  /** Element with ID 'media-widget' should contain element
-      with ID 'media-data-table'. */
-  /** @type {boolean} */
-  var result = element && table && element.querySelector(CSS_RULE);
+
+  // If element with ID 'media-widget' is not empty it shouldn't contain
+  // element with CSS classes '.rule.media-none'.
+  /** @type {boolean} */ var result = !!(element && table &&
+                                         element.querySelector(CSS_RULE));
+
   /** @type {NodeList} */ var rows;
   /** @type {number} */ var length;
 
   if (!result) {
-    /** If element with ID 'media-widget' is not empty it shouldn't contain
-        element with CSS classes '.rule.media-none'. */
     rows = element.getElementsByTagName('TR');
     length = rows.length;
     for (; length;) {
+      // rows in element with ID 'media-data-table' should start with text
+      // string '@media'.
       if (!MEDIA_PATTERN.test(rows[--length].textContent.trim())) {
-        /** rows in element with ID 'media-data-table' should start with text
-            string '@media'. */
         result = true;
         break;
       }
     }
   } else if (result) {
-    /** If element with ID 'media-widget' is empty it should contain element
-        with CSS classes '.rule.media-none'. */
+    // If element with ID 'media-widget' is empty it should contain element
+    // with CSS classes '.rule.media-none'.
     result = false;
   }
 
