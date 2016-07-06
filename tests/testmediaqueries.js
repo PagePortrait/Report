@@ -46,7 +46,6 @@ function testMediaQueries() {
       }
     }
   }
-
   return result;
 }
 
