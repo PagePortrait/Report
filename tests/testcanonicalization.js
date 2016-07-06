@@ -24,7 +24,7 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testCanonicalization() {
-  /** @type {boolean} */ var result = false;
+  /** @type {boolean} */ var result = !document.getElementsByClassName(WIDGET);
   /** @type {Array.<string>} */ var rows = [CANONICAL_URL, CANONICAL_IP];
   /** @type {number} */ var length = rows.length;
   /** @type {Element} */ var element;
@@ -33,7 +33,7 @@ function testCanonicalization() {
   /** @type {Element} */ var passDisplay;
   /** @type {Element} */ var failDisplay;
 
-  if (document.getElementsByClassName(WIDGET)) {
+  if (result) {
     for (; length;) {
       element = document.getElementById(rows[--length]);
       if (element) {
@@ -53,8 +53,6 @@ function testCanonicalization() {
         }
       }
     }
-  } else {
-    result = true;
   }
 
   return result;
