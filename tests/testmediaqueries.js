@@ -33,13 +33,14 @@ function testMediaQueries() {
 
   // If element with ID 'media-widget' is not empty it shouldn't contain
   // element with CSS classes '.rule.media-none'.
-  /** @type {boolean} */ var result = !!(element && table &&
-                                         element.querySelector(CSS_RULE));
+  /** @type {boolean} */ var result = !(element && table &&
+                                        element.querySelector(CSS_RULE));
 
   /** @type {NodeList} */ var rows;
   /** @type {number} */ var length;
 
-  if (!result) {
+  if (result) {
+    result = !result;
     rows = element.getElementsByTagName('TR');
     length = rows.length;
     for (; length;) {
@@ -50,10 +51,6 @@ function testMediaQueries() {
         break;
       }
     }
-  } else if (result) {
-    // If element with ID 'media-widget' is empty it should contain element
-    // with CSS classes '.rule.media-none'.
-    result = false;
   }
 
   return result;
