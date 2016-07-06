@@ -4,7 +4,7 @@
  * - Element with id 'media-widget' should exist;
  * - If widget is not empty it should contain element with id
  *   'media-data-table';
- * - Rows in 'media-data-table' should contain text string '@media';
+ * - Every row in 'media-data-table' should contain text string '@media';
  * - If widget is empty it should contain classes '.rule.media-none'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
@@ -23,8 +23,7 @@
 function testMediaQueries() {
   /** @type {Element} */ var element = document.getElementById(WIDGET);
   /** @type {Element} */ var table = document.getElementById(TABLE_ID);
-  /** @type {boolean} */
-  var result = !(element && element.querySelector(CSS_RULE));
+  /** @type {boolean} */ var result = false;
   /** @type {NodeList} */ var rows;
   /** @type {number} */ var length;
 
@@ -32,9 +31,8 @@ function testMediaQueries() {
     rows = element.getElementsByTagName('TR');
     length = rows.length;
     for (; length;) {
-      if (MEDIA_PATTERN.test(rows[--length].textContent.trim())) {
-        result = false;
-      } else {
+      if (!MEDIA_PATTERN.test(rows[--length].textContent.trim()) &&
+          !element.querySelector(CSS_RULE)) {
         result = true;
         break;
       }
