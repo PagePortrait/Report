@@ -3,11 +3,10 @@
  * Success criterias:
  * - Widget with ID 'media-widget' should exist and can be empty or can
  *   return media queries;
- * - If widget is not empty it should contain element with ID
- *   'media-data-table' and shouldn't contain element with
- *   CSS classes '.rule.media-none';
- * - If widget contains element with ID 'media-data-table' then every
- *   row in 'media-data-table' should contain text string '@media';
+ * - Widget should contain element with ID 'media-data-table';
+ * - If widget is not empty it shouldn't contain element with
+ *   CSS classes '.rule.media-none' and row in 'media-data-table' should
+ *   contain text string '@media';
  * - If widget is empty it should contain element with
  *   CSS classes '.rule.media-none'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
@@ -29,6 +28,7 @@ function testMediaQueries() {
   /**  Widget with ID 'media-widget' should exist and can be empty or can
        return media queries. */
   /** @type {Element} */ var table = document.getElementById(TABLE_ID);
+  /** Widget should contain element with ID 'media-data-table'. */
   /** @type {boolean} */
   var result = element && element.querySelector(CSS_RULE);
   /** @type {NodeList} */ var rows;
@@ -42,7 +42,7 @@ function testMediaQueries() {
     length = rows.length;
     for (; length;) {
       if (!MEDIA_PATTERN.test(rows[--length].textContent.trim())) {
-        /** If widget contains element with ID 'media-data-table' then every
+        /** If widget is not empty then every
             row in 'media-data-table' should contain text string '@media'. */
         result = true;
         break;
