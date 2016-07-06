@@ -9,8 +9,7 @@
  * - If widget contains element with ID 'media-data-table' then every
  *   row in 'media-data-table' should contain text string '@media';
  * - If widget is empty it should contain element with
- *   CSS classes '.rule.media-none' and shouldn't contain element
- *   with ID 'media-data-table'.
+ *   CSS classes '.rule.media-none'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
@@ -49,11 +48,9 @@ function testMediaQueries() {
         break;
       }
     }
-  }
-  if (result && !table) {
+  } else if (result) {
     /** If widget is empty it should contain element with
-        CSS classes '.rule.media-none' and shouldn't contain element
-        with ID 'media-data-table' */
+        CSS classes '.rule.media-none'. */
     result = false;
   }
 
