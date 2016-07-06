@@ -1,13 +1,13 @@
 /**
  * @fileoverview Defines test for Media Queries widget.
  * Success criterias:
- * - Widget with ID 'media-widget' should exist and can be empty or can
- *   return media queries;
- * - Widget should contain element with ID 'media-data-table';
- * - If widget is not empty it shouldn't contain element with
- *   CSS classes '.rule.media-none' and row in 'media-data-table' should
- *   contain text string '@media';
- * - If widget is empty it should contain element with
+ * - Element with ID 'media-widget' should exist;
+ * - Element with ID 'media-widget' should contain element
+ *   with ID 'media-data-table';
+ * - If element with ID 'media-widget' is not empty it shouldn't contain
+ *   element with CSS classes '.rule.media-none' and rows in element with ID
+ *   'media-data-table' should start with text string '@media';
+ * - If element with ID 'media-widget' is empty it should contain element with
  *   CSS classes '.rule.media-none'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
@@ -25,32 +25,31 @@
  */
 function testMediaQueries() {
   /** @type {Element} */ var element = document.getElementById(WIDGET_ID);
-  /**  Widget with ID 'media-widget' should exist and can be empty or can
-       return media queries. */
+  /** Element with ID 'media-widget' should exist. */
   /** @type {Element} */ var table = document.getElementById(TABLE_ID);
-  /** Widget should contain element with ID 'media-data-table'. */
+  /** Element with ID 'media-widget' should contain element
+      with ID 'media-data-table'. */
   /** @type {boolean} */
-  var result = element && element.querySelector(CSS_RULE);
+  var result = element && table && element.querySelector(CSS_RULE);
   /** @type {NodeList} */ var rows;
   /** @type {number} */ var length;
 
-  if (!result && table) {
-    /** If widget is not empty it should contain element with ID
-        'media-data-table' and shouldn't contain element with
-        CSS classes '.rule.media-none'. */
+  if (!result) {
+    /** If element with ID 'media-widget' is not empty it shouldn't contain
+        element with CSS classes '.rule.media-none'. */
     rows = element.getElementsByTagName('TR');
     length = rows.length;
     for (; length;) {
       if (!MEDIA_PATTERN.test(rows[--length].textContent.trim())) {
-        /** If widget is not empty then every
-            row in 'media-data-table' should contain text string '@media'. */
+        /** rows in element with ID 'media-data-table' should start with text
+            string '@media'. */
         result = true;
         break;
       }
     }
   } else if (result) {
-    /** If widget is empty it should contain element with
-        CSS classes '.rule.media-none'. */
+    /** If element with ID 'media-widget' is empty it should contain element
+        with CSS classes '.rule.media-none'. */
     result = false;
   }
 
