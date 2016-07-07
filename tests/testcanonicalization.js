@@ -1,32 +1,41 @@
 /**
- * @fileoverview Defines tests for URL and IP canonalization.
+ * @fileoverview Defines test for Canonalization widget.
  * Successful criterias:
- * - Element with id 'widget-canonical-url' should exist;
- * - Widget should contain elements with 'canonical-url' and
- *   'canonical-ip' ids;
- * - Tag with 'pass' class should contain inner text 'Yes' and have style
- *   'display: block' if check pass or 'display: none' if check does not pass;
- * - Tag with 'fail' class should contain inner text 'No' and have style
- *   'display: block' or 'display: inline-block' if check does not pass or
- * - 'display: none' if check pass.
+ * - Element with ID 'widget-canonical-url' should exist;
+ * - Element with ID 'widget-canonical-url' should contain elements with
+ *   ID 'canonical-url' and element with ID 'canonical-ip';
+ * - Element with ID 'canonical-url' and element with ID 'canonical-ip' should
+ *   contain element with CSS class 'pass' or element with CSS class 'fail';
+ * - Element with CSS class 'pass' should contain inner text 'Yes';
+ * - Element with CSS class 'fail' should contain inner text 'No';
+ * - Element with CSS class 'pass' should have CSS style 'display: block' if
+ *   canonical check pass or CSS style 'display: none' if canonical
+ *   check does not pass;
+ * - Element with CSS class 'fail' should have CSS style 'display: block' or
+ *   'display: inline-block' if canonical check does not pass or
+ *   CSS style 'display: none' if check pass.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 
-/** @const {string} */ var PASS = 'pass';
-/** @const {string} */ var FAIL = 'fail';
-/** @const {string} */ var WIDGET = 'widget-canonical-url';
-/** @const {string} */ var CANONICAL_IP = 'canonical-ip';
-/** @const {string} */ var CANONICAL_URL = 'canonical-url';
+/** @const {string} */ var PASS_CLASS_NAME = 'pass';
+/** @const {string} */ var FAIL_CLASS_NAME = 'fail';
+/** @const {string} */ var WIDGET_ID = 'widget-canonical-url';
+/** @const {string} */ var CANONICAL_IP_ID = 'canonical-ip';
+/** @const {string} */ var CANONICAL_URL_ID = 'canonical-url';
+/** @const {string} */ var PASS_TEXT = 'Yes';
+/** @const {string} */ var FAIL_TEXT = 'No';
 
 
 /**
  * @return {boolean} Returns "true" if test failed.
  */
 function testCanonicalization() {
-  /** @type {boolean} */ var result = !document.getElementsByClassName(WIDGET);
-  /** @type {Array.<string>} */ var rows = [CANONICAL_URL, CANONICAL_IP];
+  // Element with ID 'widget-canonical-url' should exist.
+  /** @type {boolean} */
+  var result = !document.getElementsByClassName(WIDGET_ID);
+  /** @type {Array.<string>} */ var rows = [CANONICAL_URL_ID, CANONICAL_IP_ID];
   /** @type {number} */ var length = rows.length;
   /** @type {Element} */ var element;
   /** @type {Element} */ var passElement;
@@ -36,15 +45,29 @@ function testCanonicalization() {
 
   if (result) {
     for (; length;) {
+      // Element with ID 'widget-canonical-url' should contain elements with
+      // ID 'canonical-url' and element with ID 'canonical-ip'.
       element = document.getElementById(rows[--length]);
       if (element) {
-        passElement = element.getElementsByClassName(PASS)[0];
-        failElement = element.getElementsByClassName(FAIL)[0];
-        if (passElement && failElement) {
+        // Element with ID 'canonical-url' and element with ID 'canonical-ip'
+        // should contain element with CSS class 'pass' or element with
+        // CSS class 'fail'.
+        passElement = element.getElementsByClassName(PASS_CLASS_NAME)[0];
+        failElement = element.getElementsByClassName(FAIL_CLASS_NAME)[0];
+        // Element with CSS class 'pass' should contain inner text 'Yes';
+        // Element with CSS class 'fail' should contain inner text 'No';
+        if (passElement.textContent == PASS_TEXT &&
+            failElement.textContent == FAIL_TEXT) {
           passDisplay =
               getComputedStyle(passElement).getPropertyValue('display');
           failDisplay =
               getComputedStyle(failElement).getPropertyValue('display');
+          // Element with CSS class 'pass' should have CSS style
+          // 'display: block' if canonical check pass or CSS style
+          // 'display: none' if canonical check does not pass;
+          // Element with CSS class 'fail' should have CSS style
+          // 'display: block' or 'display: inline-block' if canonical check
+          // does not pass or CSS style 'display: none' if check pass.
           if ((passDisplay == 'none' && (failDisplay !== 'inline-block' ||
               failDisplay !== 'block')) || (passDisplay != 'none' &&
               failDisplay != 'none')) {
