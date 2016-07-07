@@ -1,6 +1,6 @@
 /**
  * @fileoverview Defines test for Canonalization widget.
- * Successful criterias:
+ * Successful criteria:
  * - Element with ID 'widget-canonical-url' should exist;
  * - Element with ID 'widget-canonical-url' should contain elements with
  *   ID 'canonical-url' and element with ID 'canonical-ip';
