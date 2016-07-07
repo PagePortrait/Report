@@ -1,11 +1,12 @@
 /**
  * @fileoverview Defines test for Media Queries widget.
- * Success criterias:
+ * Success criteria:
  * - Element with ID 'media-widget' should exist;
  * - Element with ID 'media-widget' should contain element
  *   with ID 'media-data-table';
  * - If element with ID 'media-widget' is not empty it shouldn't contain
- *   element with CSS classes '.rule.media-none' and rows in element with ID
+ *   element with CSS classes '.rule.media-none'
+ * - If element with ID 'media-widget' is not empty rows in element with ID
  *   'media-data-table' should start with text string '@media';
  * - If element with ID 'media-widget' is empty it should contain element with
  *   CSS classes '.rule.media-none'.
