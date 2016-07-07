@@ -1,13 +1,13 @@
 /**
- * @fileoverview Defines test for Canonalization widget.
+ * @fileoverview Defines test for Canonicalization widget.
  * Successful criteria:
  * - Element with ID 'widget-canonical-url' should exist;
  * - Element with ID 'widget-canonical-url' should contain elements with
  *   ID 'canonical-url' and element with ID 'canonical-ip';
  * - Element with ID 'canonical-url' and element with ID 'canonical-ip' should
  *   contain element with CSS class 'pass' or element with CSS class 'fail';
- * - Element with CSS class 'pass' should contain inner text 'Yes';
- * - Element with CSS class 'fail' should contain inner text 'No';
+ * - Element with CSS class 'pass' should contain string 'Yes';
+ * - Element with CSS class 'fail' should contain string 'No';
  * - Element with CSS class 'pass' should have CSS style 'display: block' if
  *   canonical check pass or CSS style 'display: none' if canonical
  *   check does not pass;
@@ -43,7 +43,8 @@ function testCanonicalization() {
   /** @type {Element} */ var passDisplay;
   /** @type {Element} */ var failDisplay;
 
-  if (result) {
+
+  if (!result) {
     for (; length;) {
       // Element with ID 'widget-canonical-url' should contain elements with
       // ID 'canonical-url' and element with ID 'canonical-ip'.
@@ -54,8 +55,8 @@ function testCanonicalization() {
         // CSS class 'fail'.
         passElement = element.getElementsByClassName(PASS_CLASS_NAME)[0];
         failElement = element.getElementsByClassName(FAIL_CLASS_NAME)[0];
-        // Element with CSS class 'pass' should contain inner text 'Yes';
-        // Element with CSS class 'fail' should contain inner text 'No';
+        // Element with CSS class 'pass' should contain string 'Yes';
+        // Element with CSS class 'fail' should contain string 'No';
         if (passElement.textContent == PASS_TEXT &&
             failElement.textContent == FAIL_TEXT) {
           passDisplay =
@@ -68,13 +69,17 @@ function testCanonicalization() {
           // Element with CSS class 'fail' should have CSS style
           // 'display: block' or 'display: inline-block' if canonical check
           // does not pass or CSS style 'display: none' if check pass.
-          if ((passDisplay == 'none' && (failDisplay !== 'inline-block' ||
-              failDisplay !== 'block')) || (passDisplay != 'none' &&
-              failDisplay != 'none')) {
+          if (!((passDisplay == 'block' && failDisplay == 'none') ||
+              (passDisplay == 'none' && (failDisplay == 'inline-block' ||
+              failDisplay == 'block')))) {
             result = true;
             break;
           }
+        } else {
+          result = true;
         }
+      } else {
+        result = true;
       }
     }
   }
