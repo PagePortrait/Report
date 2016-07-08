@@ -29,17 +29,21 @@
  */
 function testOptionsButton() {
   /** @type {boolean} */ var result = true;
-  /** @type {Element} */
+  
   // Element with CSS class 'report-actions' should exist.
+  /** @type {Element} */
   var optionsButton = document.querySelector(BUTTON_CLASS_NAME);
+  
   // Element with CSS class 'report-actions' should contain element with
   // tag name'li'.
   /** @type {Element} */
   var element = optionsButton.getElementsByTagName('li')[0];
+  
   // Element with tag name 'li' should have CSS class 'closed' by default.
   /** @type {Node} */
   var buttonClosed = element &&
       element.getElementsByClassName(BUTTON_CLOSED_CLASS_NAME);
+  
   // Element with CSS class 'report-actions' should contain element with
   // ID 'toggle-widgets-view'.
   /** @type {Element} */
