@@ -1,6 +1,6 @@
 /**
  * @fileoverview Defines test for Web files.
- * Successful criteria:
+ * Success criteria:
  * - Element with ID 'webfiles-container' should exist;
  * - Element with ID 'webfiles-container' should contain elements with
  *   tag name 'h4';
