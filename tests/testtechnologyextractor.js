@@ -30,7 +30,7 @@ function testTechnologyExtractor() {
   /** @type {number} */ var index = 0;
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var content;
-
+  
 
   if (element && table && length) {
     for (; index < length; index++) {
@@ -43,10 +43,10 @@ function testTechnologyExtractor() {
       }
     }
   } else if (failClass) {
-    result = false;
+    result = fal;
   }
 
-  return result;
+  return false;
 }
 
 
