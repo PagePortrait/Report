@@ -1,15 +1,15 @@
 /**
  * @fileoverview Defines tests for Technology Extractor widget.
  * Success criterias:
- * - Element with ID 'widget-technologies' should exist;
- * - Element with ID 'widget-technologies' should contain element with
+ * - Element with CSS class 'widget-technologies' should exist;
+ * - Element with CSS class 'widget-technologies' should contain element with
  *   ID 'technology-data-table';
- * - If element with ID 'widget-technologies' is not empty it should contain
- *   element with CSS class 'rule' and it shouldn't contain element with
+ * - If element with CSS class 'widget-technologies' is not empty it should 
+ *   contain element with CSS class 'rule' and it shouldn't contain element with
  *   CSS classes 'true';
- * - If element with ID 'widget-technologies' is empty it should contain
+ * - If element with CSS class 'widget-technologies' is empty it should contain
  *   element with CSS class 'rule true';
- * - If element with ID 'widget-technologies' is not empty, element with
+ * - If element with CSS class 'widget-technologies' is not empty, element with
  *   ID 'technology-data-table' should contain elements with tag name 'tr';
  * - Elements with tag name 'tr' should contain elements with tag names 'th'
  *   and 'td';
@@ -30,20 +30,20 @@
  * @return {boolean} Returns "true" if test failed.
  */
 function testTechnologyExtractor() {
-  // Element with ID 'widget-technologies' should exist.
+  // Element with CSS class 'widget-technologies' should exist.
   /** @type {Element} */
   var element = document.querySelector(WIDGET_CLASS_NAME);
 
-  // Element with ID 'widget-technologies' should contain element with
+  // Element with CSS class 'widget-technologies' should contain element with
   //  ID 'technology-data-table'.
   /** @type {Element} */
   var table = document.getElementById(TABLE_ID);
 
-  // If element with ID 'widget-technologies' is empty it should contain
-  //  element with CSS class 'rule true'.
+  // If element with CSS class 'widget-technologies' is empty it should contain
+  // element with CSS class 'rule true'.
   /** @type {boolean} */ var result = !element.querySelector(FAIL_CLASS_NAME);
 
-  // If element with ID 'widget-technologies' is not empty, element with
+  // If element with CSS class 'widget-technologies' is not empty, element with
   // ID 'technology-data-table' should contain elements with tag name 'tr'.
   /** @type {NodeList} */
   var elements = element.getElementsByTagName('tr');
