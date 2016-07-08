@@ -1,52 +1,73 @@
 /**
  * @fileoverview Defines tests for Technology Extractor widget.
  * Success criterias:
- * - Element with id 'content-technology-container' should exist;
- * - Result table with id 'technology-data-table' or element with classes
- *   'rule true' should exist;
- * - Result table should contain string with technology name and a counter.
+ * - Element with ID 'widget-technologies' should exist;
+ * - Element with ID 'widget-technologies' should contain element with
+ *   ID 'technology-data-table';
+ * - If element with ID 'widget-technologies' is not empty it should contain
+ *   element with CSS class 'rule' and it shouldn't contain element with
+ *   CSS classes 'true';
+ * - If element with ID 'widget-technologies' is empty it should contain
+ *   element with CSS class 'rule true';
+ * - If element with ID 'widget-technologies' is not empty, element with
+ *   ID 'technology-data-table' should contain elements with tag name 'tr';
+ * - Elements with tag name 'tr' should contain elements with tag names 'th'
+ *   and 'td';
+ * - In element with tag name 'tr' first element should contain string,
+ *   second element should contain number.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
 
 
 /** @const {!RegExp} */ var PATTERN = /^\d([,\.]*\d)*$/;
+/** @const {string} */ var WIDGET_CLASS_NAME = '.widget-technologies';
+/** @const {string} */ var TABLE_ID = 'technology-data-table';
+/** @const {string} */ var FAIL_CLASS_NAME = '.rule.true';
 
 
 /**
  * @return {boolean} Returns "true" if test failed.
  */
 function testTechnologyExtractor() {
-  /** @type {boolean} */ var result = true;
+  // Element with ID 'widget-technologies' should exist.
   /** @type {Element} */
-  var element = document.getElementById('content-technology-container');
+  var element = document.querySelector(WIDGET_CLASS_NAME);
+
+  // Element with ID 'widget-technologies' should contain element with
+  //  ID 'technology-data-table'.
   /** @type {Element} */
-  var table = document.getElementById('technology-data-table');
-  /** @type {Element} */
-  var failClass = element && element.getElementsByClassName('rule true');
+  var table = document.getElementById(TABLE_ID);
+
+  // If element with ID 'widget-technologies' is empty it should contain
+  //  element with CSS class 'rule true'.
+  /** @type {boolean} */ var result = !element.querySelector(FAIL_CLASS_NAME);
+
+  // If element with ID 'widget-technologies' is not empty, element with
+  // ID 'technology-data-table' should contain elements with tag name 'tr'.
   /** @type {NodeList} */
-  var elements = element && element.getElementsByTagName('tr');
-  /** @type {number} */ var length = element && elements.length;
-  /** @type {number} */ var index = 0;
+  var elements = element.getElementsByTagName('tr');
+  /** @type {number} */ var length = elements.length;
   /** @type {NodeList} */ var cells;
   /** @type {string} */ var content;
-  
 
-  if (element && table && length) {
-    for (; index < length; index++) {
-      cells = elements[index].querySelectorAll('th,td');
+  if (element && table && length && result) {
+    for (; length;) {
+      result = !result;
+      // Elements with tag name 'tr' should contain elements with tag names 'th'
+      //  and 'td'.
+      cells = elements[--length].querySelectorAll('th,td');
       content = cells[1].textContent.trim();
-
-      if (!(cells[0].textContent.trim() &&
-          (PATTERN.test(content) || 'N/A' == content))) {
-        result = false;
+      // In element with tag name 'tr' first element should contain
+      // string, second element should contain number.
+      if (!(cells[0].textContent && PATTERN.test(content))) {
+        result = true;
+        break;
       }
     }
-  } else if (failClass) {
-    result = fal;
   }
 
-  return false;
+  return result;
 }
 
 
