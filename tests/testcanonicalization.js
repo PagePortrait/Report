@@ -24,8 +24,6 @@
 /** @const {string} */ var WIDGET_ID = '.widget-canonical-url';
 /** @const {string} */ var CANONICAL_IP_ID = 'canonical-ip';
 /** @const {string} */ var CANONICAL_URL_ID = 'canonical-url';
-/** @const {string} */ var PASS_TEXT = 'Yes';
-/** @const {string} */ var FAIL_TEXT = 'No';
 
 
 /**
@@ -43,7 +41,6 @@ function testCanonicalization() {
   /** @type {Element} */ var passDisplay;
   /** @type {Element} */ var failDisplay;
 
-
   if (!result) {
     for (; length;) {
       // Element with ID 'widget-canonical-url' should contain elements with
@@ -57,8 +54,7 @@ function testCanonicalization() {
         failElement = element.querySelector(FAIL_CLASS_NAME);
         // Element with CSS class 'pass' should contain string 'Yes';
         // Element with CSS class 'fail' should contain string 'No';
-        if (passElement.textContent == PASS_TEXT &&
-            failElement.textContent == FAIL_TEXT) {
+        if (passElement.textContent && failElement.textContent) {
           passDisplay =
               getComputedStyle(passElement).getPropertyValue('display');
           failDisplay =
@@ -69,9 +65,9 @@ function testCanonicalization() {
           // Element with CSS class 'fail' should have CSS style
           // 'display: block' or 'display: inline-block' if canonical check
           // does not pass or CSS style 'display: none' if check pass.
-          if (!((passDisplay == 'block' && failDisplay == 'none') ||
-              (passDisplay == 'none' && (failDisplay == 'inline-block' ||
-              failDisplay == 'block')))) {
+          if (!(('block' == passDisplay && 'none' == failDisplay) ||
+              ('none' == passDisplay && ('inline-block' == failDisplay ||
+              'block' == failDisplay)))) {
             result = true;
             break;
           }
