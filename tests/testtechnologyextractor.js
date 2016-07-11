@@ -54,8 +54,8 @@ function testTechnologyExtractor() {
   if (element && table && length && result) {
     for (; length;) {
       result = !result;
-      // Elements with tag name 'tr' should contain elements with tag names 'th'
-      //  and 'td'.
+      // Elements with tag name 'tr' should contain elements with tag names 
+      // 'th' and 'td'.
       cells = elements[--length].querySelectorAll('th,td');
       content = cells[1].textContent.trim();
       // In element with tag name 'tr' first element should contain
