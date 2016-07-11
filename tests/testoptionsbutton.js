@@ -8,8 +8,8 @@
  * - Element with CSS class 'report-actions' should contain element with
  *   ID 'toggle-widgets-view';
  * - Element with CSS class 'report-actions' should be clickable;
- * - Upon click on element with CSS class 'report-actions' to all elements with
- *   CSS class 'is-expandable' should be added CSS class 'expanded';
+ * - Upon click on element with CSS class 'report-actions' to all elements 
+ *   with CSS class 'is-expandable' should be added CSS class 'expanded';
  * - On second click on element with CSS class 'report-actions' in all elements
  *   with CSS class 'is-expandable' should be removed CSS class 'expanded'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
