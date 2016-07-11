@@ -4,7 +4,7 @@
  * - Element with CSS class 'widget-technologies' should exist;
  * - Element with CSS class 'widget-technologies' should contain element with
  *   ID 'technology-data-table';
- * - If element with CSS class 'widget-technologies' is not empty it should 
+ * - If element with CSS class 'widget-technologies' is not empty it should
  *   contain element with CSS class 'rule' and it shouldn't contain element with
  *   CSS classes 'true';
  * - If element with CSS class 'widget-technologies' is empty it should contain
@@ -35,7 +35,7 @@ function testTechnologyExtractor() {
   var element = document.querySelector(WIDGET_CLASS_NAME);
 
   // Element with CSS class 'widget-technologies' should contain element with
-  //  ID 'technology-data-table'.
+  // ID 'technology-data-table'.
   /** @type {Element} */
   var table = document.getElementById(TABLE_ID);
 
@@ -54,7 +54,7 @@ function testTechnologyExtractor() {
   if (element && table && length && result) {
     for (; length;) {
       result = !result;
-      // Elements with tag name 'tr' should contain elements with tag names 
+      // Elements with tag name 'tr' should contain elements with tag names
       // 'th' and 'td'.
       cells = elements[--length].querySelectorAll('th,td');
       content = cells[1].textContent.trim();
