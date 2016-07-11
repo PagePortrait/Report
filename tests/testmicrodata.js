@@ -4,7 +4,7 @@
  * - Element with ID 'microdata-container' should exist;
  * - Element with ID 'microdata-container' should contain element with CSS
  *   class 'widget-subheader';
- * - Element with CSS class 'widget-subheader' should contain string that 
+ * - Element with CSS class 'widget-subheader' should contain string that
  *   should be adhere to the following examples:
  *   'found 101 unique links out of 110 total.';
  * - Element with ID 'microdata-container' should contain element with CSS
@@ -32,16 +32,16 @@
  */
 function testMicrodata() {
   /** @type {boolean} */ var result = true;
-  
+
   // Element with ID 'microdata-container' should exist.
   /** @type {Element} */
   var widget = document.getElementById(WIDGET_ID);
-  
+
   // Element with ID 'microdata-container' should contain element with CSS
   // class 'widget-subheader'
-  /** @type {Node} */
+  /** @type {string} */
   var subheader = widget.querySelector(SUBHEADER_CLASS_NAME).textContent;
-  
+
   // Element with ID 'microdata-container' should contain element with CSS
   // class 'widget-content'.
   /** @type {Node} */
@@ -54,7 +54,7 @@ function testMicrodata() {
   var noData = widget.querySelector(NODATA_CLASS_NAME);
 
   subheader = subheader.replace(/\s+/g, ' ');
-  // Element with CSS class 'widget-subheader' should contain string that 
+  // Element with CSS class 'widget-subheader' should contain string that
   // should be adhere to the following examples:
   // 'found 101 unique links out of 110 total.';
   // If element with ID 'microdata-container' isn't empty, element with CSS
