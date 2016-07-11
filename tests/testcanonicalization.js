@@ -19,9 +19,9 @@
  */
 
 
-/** @const {string} */ var PASS_CLASS_NAME = '.pass';
-/** @const {string} */ var FAIL_CLASS_NAME = '.fail';
-/** @const {string} */ var WIDGET_ID = '.widget-canonical-url';
+/** @const {string} */ var PASS_SELECTOR = '.pass';
+/** @const {string} */ var FAIL_SELECTOR = '.fail';
+/** @const {string} */ var WIDGET_SELECTOR = '.widget-canonical-url';
 /** @const {string} */ var CANONICAL_IP_ID = 'canonical-ip';
 /** @const {string} */ var CANONICAL_URL_ID = 'canonical-url';
 
@@ -32,7 +32,7 @@
 function testCanonicalization() {
   // Element with ID 'widget-canonical-url' should exist.
   /** @type {boolean} */
-  var result = !document.querySelector(WIDGET_ID);
+  var result = !document.querySelector(WIDGET_SELECTOR);
   /** @type {Array.<string>} */ var rows = [CANONICAL_URL_ID, CANONICAL_IP_ID];
   /** @type {number} */ var length = rows.length;
   /** @type {Element} */ var element;
@@ -50,8 +50,8 @@ function testCanonicalization() {
         // Element with ID 'canonical-url' and element with ID 'canonical-ip'
         // should contain element with CSS class 'pass' or element with
         // CSS class 'fail'.
-        passElement = element.querySelector(PASS_CLASS_NAME);
-        failElement = element.querySelector(FAIL_CLASS_NAME);
+        passElement = element.querySelector(PASS_SELECTOR);
+        failElement = element.querySelector(FAIL_SELECTOR);
         // Element with CSS class 'pass' should contain string 'Yes';
         // Element with CSS class 'fail' should contain string 'No';
         if (passElement.textContent && failElement.textContent) {
