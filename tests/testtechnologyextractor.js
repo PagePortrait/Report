@@ -20,7 +20,7 @@
  */
 
 
-/** @const {!RegExp} */ var PATTERN = /^\d([,\.]*\d)*$/;
+/** @const {!RegExp} */ var PATTERN = /^\d*$/;
 /** @const {string} */ var WIDGET_SELECTOR = '.widget-technologies';
 /** @const {string} */ var TABLE_ID = 'technology-data-table';
 /** @const {string} */ var FAIL_SELECTOR = '.rule.true';
