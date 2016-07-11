@@ -17,8 +17,8 @@
  */
 
 
-/** @const {string} */ var BUTTON_CLASS_NAME = '.report-actions';
-/** @const {string} */ var BUTTON_CLOSED_CLASS_NAME = '.closed';
+/** @const {string} */ var BUTTON_SELECTOR = '.report-actions';
+/** @const {string} */ var BUTTON_CLOSED_CLASS_NAME = 'closed';
 /** @const {string} */ var TOGGLE_BUTTON_ID = 'toggle-widgets-view';
 /** @const {string} */ var EXPANDABLE_CLASS_NAME = 'is-expandable';
 /** @const {string} */ var EXPANDED_CLASS_NAME = 'expanded';
@@ -32,7 +32,7 @@ function testOptionsButton() {
 
   // Element with CSS class 'report-actions' should exist.
   /** @type {Element} */
-  var optionsButton = document.querySelector(BUTTON_CLASS_NAME);
+  var optionsButton = document.querySelector(BUTTON_SELECTOR);
 
   // Element with CSS class 'report-actions' should contain element with
   // tag name'li'.
