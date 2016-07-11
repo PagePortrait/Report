@@ -22,10 +22,10 @@
 
 
 /** @const {!RegExp} */ var PATTERN = /^\d*$/;
-/** @const {string} */ var WIDGET_CLASS_NAME = '.widget-deprecated-tags';
+/** @const {string} */ var WIDGET_SELECTOR = '.widget-deprecated-tags';
 /** @const {string} */ var CONTAINER_ID = 'content-tags-container';
-/** @const {string} */ var TRUE_CLASS_NAME = '.rule.not.true';
-/** @const {string} */ var PASS_CLASS_NAME = '.rule.not';
+/** @const {string} */ var TRUE_SELECTOR = '.rule.not.true';
+/** @const {string} */ var PASS_SELECTOR = '.rule.not';
 /** @const {string} */ var TABLE_ID = 'tags-data-table';
 
 
@@ -35,7 +35,7 @@
 function testTags() {
   // Element with CSS class 'widget-deprecated-tags' should exist.
   /** @type {Element} */
-  var widget = document.querySelector(WIDGET_CLASS_NAME);
+  var widget = document.querySelector(WIDGET_SELECTOR);
 
   // Element with CSS class 'widget-deprecated-tags' should contain element
   //  with ID 'content-tags-container'.
@@ -45,9 +45,9 @@ function testTags() {
   // If element with CSS class 'widget-deprecated-tags' is empty, it should
   // contain element with CSS classes 'rule not true';
   /** @type {boolean} */
-  var result = !container.querySelector(TRUE_CLASS_NAME);
+  var result = !container.querySelector(TRUE_SELECTOR);
   /** @type {Element} */
-  var passElement = container.querySelector(PASS_CLASS_NAME);
+  var passElement = container.querySelector(PASS_SELECTOR);
 
 
   // Element with ID 'content-tags-container' should contain element with ID
