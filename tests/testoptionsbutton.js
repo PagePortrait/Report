@@ -49,14 +49,14 @@ function testOptionsButton() {
   /** @type {Element} */
   var toggleButton = document.getElementById(TOGGLE_BUTTON_ID);
   /** @type {NodeList} */
-  var expandable = document.querySelectorAll(EXPANDABLE_CLASS_NAME);
+  var expandable = document.getElementsByClassName(EXPANDABLE_CLASS_NAME);
   /** @type {NodeList} */ var expanded;
 
   if (optionsButton && buttonClosed && toggleButton) {
     // Element with CSS class 'report-actions' should be clickable.
     if (optionsButton.dispatchEvent(new Event('click'))) {
       toggleButton.dispatchEvent(new Event('click'));
-      expanded = document.querySelectorAll(EXPANDED_CLASS_NAME);
+      expanded = document.getElementsByClassName(EXPANDED_CLASS_NAME);
       // Upon click on element with CSS class 'report-actions' to all elements
       // with CSS class 'is-expandable' should be added CSS class 'expanded'.
       if (expanded) {
