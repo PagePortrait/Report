@@ -2,7 +2,7 @@
  * @fileoverview Defines test for Web files.
  * Success criteria:
  * - Element with ID 'webfiles-container' should exist;
- * - Element with ID 'webfiles-container' should contain elements with tag 
+ * - Element with ID 'webfiles-container' should contain elements with tag
  *   name 'h4';
  * - In element with tag name 'h4' should be one of the next HTTP status code:
  *   0, 100, 101, 102, 200, 201, 202, 203, 204, 205, 206, 207, 208, 226, 300,

@@ -21,9 +21,9 @@
 
 
 /** @const {!RegExp} */ var PATTERN = /^\d([,\.]*\d)*$/;
-/** @const {string} */ var WIDGET_CLASS_NAME = '.widget-technologies';
+/** @const {string} */ var WIDGET_SELECTOR = '.widget-technologies';
 /** @const {string} */ var TABLE_ID = 'technology-data-table';
-/** @const {string} */ var FAIL_CLASS_NAME = '.rule.true';
+/** @const {string} */ var FAIL_SELECTOR = '.rule.true';
 
 
 /**
@@ -32,7 +32,7 @@
 function testTechnologyExtractor() {
   // Element with CSS class 'widget-technologies' should exist.
   /** @type {Element} */
-  var element = document.querySelector(WIDGET_CLASS_NAME);
+  var element = document.querySelector(WIDGET_SELECTOR);
 
   // Element with CSS class 'widget-technologies' should contain element with
   // ID 'technology-data-table'.
@@ -41,7 +41,7 @@ function testTechnologyExtractor() {
 
   // If element with CSS class 'widget-technologies' is empty it should contain
   // element with CSS class 'rule true'.
-  /** @type {boolean} */ var result = !element.querySelector(FAIL_CLASS_NAME);
+  /** @type {boolean} */ var result = !element.querySelector(FAIL_SELECTOR);
 
   // If element with CSS class 'widget-technologies' is not empty, element with
   // ID 'technology-data-table' should contain elements with tag name 'tr'.
@@ -60,7 +60,7 @@ function testTechnologyExtractor() {
       content = cells[1].textContent.trim();
       // In element with tag name 'tr' first element should contain
       // string, second element should contain number.
-      if (!(cells[0].textContent && PATTERN.test(content))) {
+      if (!(cells[0].textContent && content && PATTERN.test(content))) {
         result = true;
         break;
       }
