@@ -28,8 +28,8 @@ function testMediaQueries() {
   // Element with ID 'media-widget' should exist.
   /** @type {Element} */ var element = document.getElementById(WIDGET_ID);
 
-  // Element with ID 'media-widget' should contain element
-  // with ID 'media-data-table'.
+  // Element with ID 'media-widget' should contain element with
+  // ID 'media-data-table'.
   /** @type {Element} */ var table = document.getElementById(TABLE_ID);
 
   // If element with ID 'media-widget' is not empty it shouldn't contain
