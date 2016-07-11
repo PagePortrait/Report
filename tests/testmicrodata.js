@@ -19,13 +19,13 @@
  */
 
 
-/** @const {!RegExp} */ var PATTERN = new RegExp('\\w*\\s([0-9]{1,})*\\s\\w*\\s\\w*\\s([0-9]{1,})*\\s(\\w*\\s){3}([0-9]{1,})*\\s\\w*\\.', 'gmi');
-/** @const {!RegExp} */ var PATTERN = new RegExp('([^\\d]*)(\\d+)([^\\d]+)(\\d+)([^\\d]+)(\\d+)([^\\d]+)', 'gmi');
-    
+/** @const {!RegExp} */
+var PATTERN = new RegExp('\\w*\\s([0-9]{1,})*\\s\\w*\\s\\w*\\s([0-9]{1,})*' +
+    '\\s(\\w*\\s){3}([0-9]{1,})*\\s\\w*\\.', 'gmi');
 /** @const {string} */ var WIDGET_ID = 'microdata-container';
-/** @const {string} */ var SUBHEADER_CLASS_NAME = '.widget-subheader';
-/** @const {string} */ var CONTENT_CLASS_NAME = '.widget-content';
-/** @const {string} */ var NODATA_CLASS_NAME = '.no-data';
+/** @const {string} */ var SUBHEADER_SELECTOR = '.widget-subheader';
+/** @const {string} */ var CONTENT_SELECTOR = '.widget-content';
+/** @const {string} */ var NODATA_SELECTOR = '.no-data';
 
 
 /**
@@ -41,18 +41,18 @@ function testMicrodata() {
   // Element with ID 'microdata-container' should contain element with CSS
   // class 'widget-subheader'
   /** @type {string} */
-  var subheader = widget.querySelector(SUBHEADER_CLASS_NAME).textContent;
+  var subheader = widget.querySelector(SUBHEADER_SELECTOR).textContent;
 
   // Element with ID 'microdata-container' should contain element with CSS
   // class 'widget-content'.
   /** @type {Node} */
-  var content = widget.querySelector(CONTENT_CLASS_NAME);
+  var content = widget.querySelector(CONTENT_SELECTOR);
   /** @type {Node} */
   var list = content.getElementsByTagName('ul');
   /** @type {Node} */
   var listItems = content.querySelector('ul > li');
   /** @type {Node} */
-  var noData = widget.querySelector(NODATA_CLASS_NAME);
+  var noData = widget.querySelector(NODATA_SELECTOR);
 
   subheader = subheader.replace(/\s+/g, ' ');
   // Element with CSS class 'widget-subheader' should contain string that
