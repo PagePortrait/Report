@@ -36,7 +36,7 @@ function testOptionsButton() {
 
   // Element with CSS class 'report-actions' should contain element with
   // tag name'li'.
-  /** @type {Element} */
+  /** @type {?Element} */
   var element = optionsButton.getElementsByTagName('li')[0];
 
   // Element with tag name 'li' should have CSS class 'closed' by default.
@@ -48,9 +48,9 @@ function testOptionsButton() {
   // ID 'toggle-widgets-view'.
   /** @type {Element} */
   var toggleButton = document.getElementById(TOGGLE_BUTTON_ID);
-  /** @type {Array|NodeList} */
+  /** @type {NodeList} */
   var expandable = document.querySelectorAll(EXPANDABLE_CLASS_NAME);
-  /** @type {Array|NodeList} */ var expanded;
+  /** @type {NodeList} */ var expanded;
 
   if (optionsButton && buttonClosed && toggleButton) {
     // Element with CSS class 'report-actions' should be clickable.
@@ -64,9 +64,7 @@ function testOptionsButton() {
         // On second click on element with CSS class 'report-actions' in all
         // elements with CSS class 'is-expandable' should be removed CSS class
         // 'expanded'.
-        if (!expanded.length) {
-          result = false;
-        }
+        result = !!expanded.length;
       }
     }
   }
