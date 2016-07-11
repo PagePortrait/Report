@@ -19,8 +19,9 @@
  */
 
 
-/** @const {!RegExp} */ var PATTERN = new RegExp('\\w*\\s[0-9]*\\s\\w*\\s\\w*' +
-    '\\s[0-9]*\\s(\\w*\\s){3}[0-9]*\\s\\w*\\.', 'gmi');
+/** @const {!RegExp} */ var PATTERN = new RegExp('\\w*\\s([0-9]{1,})*\\s\\w*\\s\\w*\\s([0-9]{1,})*\\s(\\w*\\s){3}([0-9]{1,})*\\s\\w*\\.', 'gmi');
+/** @const {!RegExp} */ var PATTERN = new RegExp('([^\\d]*)(\\d+)([^\\d]+)(\\d+)([^\\d]+)(\\d+)([^\\d]+)', 'gmi');
+    
 /** @const {string} */ var WIDGET_ID = 'microdata-container';
 /** @const {string} */ var SUBHEADER_CLASS_NAME = '.widget-subheader';
 /** @const {string} */ var CONTENT_CLASS_NAME = '.widget-content';
