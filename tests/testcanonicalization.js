@@ -54,7 +54,7 @@ function testCanonicalization() {
         failElement = element.querySelector(FAIL_SELECTOR);
         // Element with CSS class 'pass' should contain string 'Yes';
         // Element with CSS class 'fail' should contain string 'No';
-        if (passElement.textContent && failElement.textContent) {
+        if (passElement.textContent.trim() && failElement.textContent.trim()) {
           passDisplay =
               getComputedStyle(passElement).getPropertyValue('display');
           failDisplay =
