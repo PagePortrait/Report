@@ -6,9 +6,9 @@
  *   ID 'technology-data-table';
  * - If element with CSS class 'widget-technologies' is not empty it should
  *   contain element with CSS class 'rule' and it shouldn't contain element with
- *   CSS classes 'true';
+ *   CSS class 'true';
  * - If element with CSS class 'widget-technologies' is empty it should contain
- *   element with CSS class 'rule true';
+ *   element with CSS classes 'rule true';
  * - If element with CSS class 'widget-technologies' is not empty, element with
  *   ID 'technology-data-table' should contain elements with tag name 'tr';
  * - Elements with tag name 'tr' should contain elements with tag names 'th'
@@ -40,7 +40,7 @@ function testTechnologyExtractor() {
   var table = document.getElementById(TABLE_ID);
 
   // If element with CSS class 'widget-technologies' is empty it should 
-  // contain element with CSS class 'rule true'.
+  // contain element with CSS classes 'rule true'.
   /** @type {boolean} */ var result = !element.querySelector(FAIL_SELECTOR);
 
   // If element with CSS class 'widget-technologies' is not empty, element with
