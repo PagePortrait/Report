@@ -8,10 +8,10 @@
  * - If element with CSS class 'widget-deprecated-tags' isn't empty, element
  *   with ID 'tags-data-table' shuld contain elements with tag name 'tr';
  * - If element with CSS class 'widget-deprecated-tags' is empty, it should
- *   contain element with CSS classes 'rule not true' and shouldn contain
+ *   contain element with CSS classes 'rule not true' and shouldn't contain
  *   element with CSS classes 'rule not';
  * - If element with CSS class 'widget-deprecated-tags' isn't empty, it should
- *   contain element with CSS classes 'rule not' and shouldn contain
+ *   contain element with CSS classes 'rule not' and shouldn't contain
  *   element with CSS classes 'rule not true';
  * - If element with CSS class 'widget-deprecated-tags' isn't empty,
  *   elements with tag name 'tr' should contain elements with tag name 'th' and
@@ -63,7 +63,7 @@ function testTags() {
 
   if (widget && container && table && result) {
     // If element with CSS class 'widget-deprecated-tags' isn't empty, it should
-    // contain element with CSS classes 'rule not' and shouldn contain
+    // contain element with CSS classes 'rule not' and shouldn't contain
     // element with CSS classes 'rule not true'.
     if (passElement && result) {
       for (; length;) {
