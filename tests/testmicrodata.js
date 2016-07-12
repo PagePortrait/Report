@@ -55,7 +55,7 @@ function testMicrodata() {
   // element with CSS class 'no-data';
   // If element with ID 'microdata-container' is empty it should contain
   // element with CSS class 'no-data'.
-  if (content && subheader.textContent && listItems || noData) {
+  if (content && subheader.textContent.trim() && listItems || noData) {
     result = false;
   }
   return result;
