@@ -4,9 +4,7 @@
  * - Element with ID 'microdata-container' should exist;
  * - Element with ID 'microdata-container' should contain element with CSS
  *   class 'widget-subheader';
- * - Element with CSS class 'widget-subheader' should contain string that
- *   should be adhere to the following examples:
- *   'found 101 unique links out of 110 total.';
+ * - Element with CSS class 'widget-subheader' should contain string;
  * - Element with ID 'microdata-container' should contain element with CSS
  *   class 'widget-content';
  * - If element with ID 'microdata-container' isn't empty, element with CSS
@@ -19,9 +17,6 @@
  */
 
 
-/** @const {!RegExp} */
-var PATTERN = new RegExp('\\w*\\s([0-9]{1,})*\\s\\w*\\s\\w*\\s([0-9]{1,})*' +
-    '\\s(\\w*\\s){3}([0-9]{1,})*\\s\\w*\\.', 'gmi');
 /** @const {string} */ var WIDGET_ID = 'microdata-container';
 /** @const {string} */ var SUBHEADER_SELECTOR = '.widget-subheader';
 /** @const {string} */ var CONTENT_SELECTOR = '.widget-content';
@@ -54,16 +49,13 @@ function testMicrodata() {
   /** @type {Node} */
   var noData = widget.querySelector(NODATA_SELECTOR);
 
-  subheader = subheader.replace(/\s+/g, ' ');
-  // Element with CSS class 'widget-subheader' should contain string that
-  // should be adhere to the following examples:
-  // 'found 101 unique links out of 110 total.';
+  // Element with CSS class 'widget-subheader' should contain string;
   // If element with ID 'microdata-container' isn't empty, element with CSS
   // class 'widget-content' should contain ul>li and shouldn't contain
   // element with CSS class 'no-data';
   // If element with ID 'microdata-container' is empty it should contain
   // element with CSS class 'no-data'.
-  if (content && PATTERN.test(subheader) && listItems || noData) {
+  if (content && subheader.textContent && listItems || noData) {
     result = false;
   }
   return result;
