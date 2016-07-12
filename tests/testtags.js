@@ -75,7 +75,7 @@ function testTags() {
         number = cells[1].textContent.trim();
         // In element with tag name 'tr' first element should contain string,
         // second element should contain number.
-        if (!(cells[0].textContent && number && PATTERN.test(number))) {
+        if (!(cells[0].textContent.trim() && number && PATTERN.test(number))) {
           result = true;
           break;
         }
