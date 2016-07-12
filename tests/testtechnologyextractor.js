@@ -60,7 +60,7 @@ function testTechnologyExtractor() {
       content = cells[1].textContent.trim();
       // In element with tag name 'tr' first element should contain
       // string, second element should contain number.
-      if (!(cells[0].textContent && content && PATTERN.test(content))) {
+      if (!(cells[0].textContent.trim() && content && PATTERN.test(content))) {
         result = true;
         break;
       }
