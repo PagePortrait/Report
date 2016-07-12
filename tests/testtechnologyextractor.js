@@ -39,8 +39,8 @@ function testTechnologyExtractor() {
   /** @type {Element} */
   var table = document.getElementById(TABLE_ID);
 
-  // If element with CSS class 'widget-technologies' is empty it should contain
-  // element with CSS class 'rule true'.
+  // If element with CSS class 'widget-technologies' is empty it should 
+  // contain element with CSS class 'rule true'.
   /** @type {boolean} */ var result = !element.querySelector(FAIL_SELECTOR);
 
   // If element with CSS class 'widget-technologies' is not empty, element with
