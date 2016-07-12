@@ -59,7 +59,6 @@ function testTags() {
   /** @type {Element} */ var nodes = table && table.getElementsByTagName('tr');
   /** @type {number} */ var length = nodes && nodes.length;
   /** @type {NodeList} */ var cells;
-  /** @type {string} */ var text;
   /** @type {number} */ var number;
 
   if (widget && container && table && result) {
@@ -73,11 +72,10 @@ function testTags() {
         // elements with tag name 'tr' should contain elements with tag
         // name 'th' and 'td'.
         cells = nodes[--length].querySelectorAll('th, td');
-        text = cells[0].textContent.trim();
         number = cells[1].textContent.trim();
         // In element with tag name 'tr' first element should contain string,
         // second element should contain number.
-        if (!(txt.length && PATTERN.test(num))) {
+        if (!(cells[0].textContent && number && PATTERN.test(number))) {
           result = true;
           break;
         }
