@@ -8,12 +8,12 @@
  *   contain element with CSS class 'pass' or element with CSS class 'fail';
  * - Element with CSS class 'pass' should contain string 'Yes';
  * - Element with CSS class 'fail' should contain string 'No';
- * - Element with CSS class 'pass' should have CSS style 'display: block' if
- *   canonical check pass or CSS style 'display: none' if canonical
- *   check does not pass;
- * - Element with CSS class 'fail' should have CSS style 'display: block' or
- *   'display: inline-block' if canonical check does not pass or
- *   CSS style 'display: none' if check pass.
+ * - Element with CSS class 'pass' should have CSS style property 
+ *   'display: block' if canonical check pass or CSS style property 
+ *   'display: none' if canonical check does not pass;
+ * - Element with CSS class 'fail' should have CSS style property 
+ *   'display: block' or 'display: inline-block' if canonical check does 
+ *   not pass or CSS style property 'display: none' if check pass.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
@@ -38,8 +38,8 @@ function testCanonicalization() {
   /** @type {Element} */ var element;
   /** @type {Element} */ var passElement;
   /** @type {Element} */ var failElement;
-  /** @type {Element} */ var passDisplay;
-  /** @type {Element} */ var failDisplay;
+  /** @type {string} */ var passDisplay;
+  /** @type {string} */ var failDisplay;
 
   if (!result) {
     for (; length;) {
@@ -59,12 +59,12 @@ function testCanonicalization() {
               getComputedStyle(passElement).getPropertyValue('display');
           failDisplay =
               getComputedStyle(failElement).getPropertyValue('display');
-          // Element with CSS class 'pass' should have CSS style
-          // 'display: block' if canonical check pass or CSS style
+          // Element with CSS class 'pass' should have CSS style property
+          // 'display: block' if canonical check pass or CSS style property
           // 'display: none' if canonical check does not pass;
-          // Element with CSS class 'fail' should have CSS style
+          // Element with CSS class 'fail' should have CSS style property
           // 'display: block' or 'display: inline-block' if canonical check
-          // does not pass or CSS style 'display: none' if check pass.
+          // does not pass or CSS style property 'display: none' if check pass.
           if (!(('block' == passDisplay && 'none' == failDisplay) ||
               ('none' == passDisplay && ('inline-block' == failDisplay ||
               'block' == failDisplay)))) {
