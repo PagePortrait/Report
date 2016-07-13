@@ -7,7 +7,7 @@
  * - Element with ID 'content-tags-container' should contain element with ID
  *   'tags-data-table';
  * - If element with CSS class 'widget-deprecated-tags' isn't empty, element
- *   with ID 'tags-data-table' shuld contain elements with tag name 'tr';
+ *   with ID 'tags-data-table' should contain elements with tag name 'tr';
  * - If element with CSS class 'widget-deprecated-tags' is empty, it should
  *   contain element with CSS classes 'rule not true' and shouldn't contain
  *   element with CSS classes 'rule not';
@@ -15,8 +15,8 @@
  *   contain element with CSS classes 'rule not' and shouldn't contain
  *   element with CSS classes 'rule not true';
  * - If element with CSS class 'widget-deprecated-tags' isn't empty,
- *   elements with tag name 'tr' should contain elements with tag name 'th' and
- *   'td';
+ *   elements with tag name 'tr' should contain elements with tag name 'th' 
+ *   and 'td';
  * - In element with tag name 'tr' first element should contain string,
  *   second element should contain number.
  */
@@ -56,7 +56,7 @@ function testTags() {
   /** @type {Element} */ var table = document.getElementById(TABLE_ID);
 
   // If element with CSS class 'widget-deprecated-tags' isn't empty, element
-  // with ID 'tags-data-table' shuld contain elements with tag name 'tr'.
+  // with ID 'tags-data-table' should contain elements with tag name 'tr'.
   /** @type {Element} */ var nodes = table && table.getElementsByTagName('tr');
   /** @type {number} */ var length = nodes && nodes.length;
   /** @type {NodeList} */ var cells;
@@ -76,7 +76,7 @@ function testTags() {
         number = cells[1].textContent.trim();
         // In element with tag name 'tr' first element should contain string,
         // second element should contain number.
-        if (!(cells[0].textContent.trim(  ) && number && PATTERN.test(number))) {
+        if (!(cells[0].textContent.trim() && number && PATTERN.test(number))) {
           result = true;
           break;
         }
