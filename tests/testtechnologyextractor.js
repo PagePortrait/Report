@@ -1,6 +1,6 @@
 /**
  * @fileoverview Defines tests for Technology Extractor widget.
- * Success criterias:
+ * Success criteria:
  * - Element with CSS class 'widget-technologies' should exist;
  * - Element with CSS class 'widget-technologies' should contain element with
  *   ID 'technology-data-table';
