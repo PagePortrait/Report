@@ -1,5 +1,6 @@
 /**
  * @fileoverview Defines test for Deprecated tags widget.
+ * Success criteria:
  * - Element with CSS class 'widget-deprecated-tags' should exist;
  * - Element with CSS class 'widget-deprecated-tags' should contain element
  *   with ID 'content-tags-container';
