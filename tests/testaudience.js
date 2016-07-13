@@ -4,7 +4,7 @@
  * - Elements with ID prefix 'audience-engagement-‘ should exist;
  * - Elements with ID prefix 'audience-engagement-‘ should contain content and
  *   the format should adhere to the following examples: 10.1% or 10% or
- *   10:1 or 10”;
+ *   10:1 or 10;
  * - Content of elements with ID prefix 'audience-engagement-‘ can't
  *   equal 'N/A'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
@@ -42,7 +42,7 @@ function testAudience() {
 
     // Elements with ID prefix 'audience-engagement-‘ should contain content and
     // the format should adhere to the following examples: 10.1% or 10% or
-    // 10:1 or 10”
+    // 10:1 or 10;
     // Content of elements with ID prefix 'audience-engagement-‘ can't
     // equal 'N/A'.
     if (!content || !(PATTERN.test(content) || 'N/A' == content)) {
