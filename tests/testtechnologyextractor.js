@@ -5,8 +5,8 @@
  * - Element with CSS class 'widget-technologies' should contain element with
  *   ID 'technology-data-table';
  * - If element with CSS class 'widget-technologies' is not empty it should
- *   contain element with CSS class 'rule' and it shouldn't contain element with
- *   CSS class 'true';
+ *   contain element with CSS class 'rule' and it shouldn't contain element 
+ *   with CSS class 'true';
  * - If element with CSS class 'widget-technologies' is empty it should contain
  *   element with CSS classes 'rule true';
  * - If element with CSS class 'widget-technologies' is not empty, element with
