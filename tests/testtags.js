@@ -3,8 +3,8 @@
  * - Element with CSS class 'widget-deprecated-tags' should exist;
  * - Element with CSS class 'widget-deprecated-tags' should contain element
  *   with ID 'content-tags-container';
- * - Element with ID 'content-tags-container' should contain element with ID
- *   'tags-data-table';
+ * - Element with ID 'content-tags-container' should contain element with 
+ *   ID 'tags-data-table';
  * - If element with CSS class 'widget-deprecated-tags' isn't empty, element
  *   with ID 'tags-data-table' shuld contain elements with tag name 'tr';
  * - If element with CSS class 'widget-deprecated-tags' is empty, it should
