@@ -37,7 +37,7 @@ function testOptionsButton() {
   // Element with CSS class 'report-actions' should contain element with
   // tag name'li'.
   /** @type {?Element} */
-  var element = optionsButton.getElementsByTagName('li')[0];
+  var element = optionsButton && optionsButton.getElementsByTagName('li')[0];
 
   // Element with tag name 'li' should have CSS class 'closed' by default.
   /** @type {Node} */
