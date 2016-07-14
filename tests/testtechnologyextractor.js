@@ -44,8 +44,8 @@ function testTechnologyExtractor() {
   /** @type {boolean} */ 
   var result = element && !element.querySelector(FAIL_SELECTOR);
 
-  // If element with CSS class 'widget-technologies' is not empty, element with
-  // ID 'technology-data-table' should contain elements with tag name 'tr'.
+  // If element with CSS class 'widget-technologies' is not empty, element 
+  // with ID 'technology-data-table' should contain elements with tag name 'tr'.
   /** @type {NodeList} */
   var elements = element && element.getElementsByTagName('tr');
   /** @type {number} */ var length = elements.length;
