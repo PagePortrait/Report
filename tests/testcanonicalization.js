@@ -50,8 +50,8 @@ function testCanonicalization() {
         // Element with ID 'canonical-url' and element with ID 'canonical-ip'
         // should contain element with CSS class 'pass' or element with
         // CSS class 'fail'.
-        passElement = element.querySelector(PASS_SELECTOR);
-        failElement = element.querySelector(FAIL_SELECTOR);
+        passElement = element && element.querySelector(PASS_SELECTOR);
+        failElement = element && element.querySelector(FAIL_SELECTOR);
         // Element with CSS class 'pass' should contain string 'Yes';
         // Element with CSS class 'fail' should contain string 'No';
         if (passElement.textContent.trim() && failElement.textContent.trim()) {
