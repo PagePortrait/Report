@@ -36,16 +36,17 @@ function testMicrodata() {
   // Element with ID 'microdata-container' should contain element with CSS
   // class 'widget-subheader'
   /** @type {string} */
-  var subheader = widget.querySelector(SUBHEADER_SELECTOR).textContent.trim();
+  var subheader = widget &&
+  widget.querySelector(SUBHEADER_SELECTOR).textContent.trim();
 
   // Element with ID 'microdata-container' should contain element with CSS
   // class 'widget-content'.
   /** @type {Node} */
-  var content = widget.querySelector(CONTENT_SELECTOR);
+  var content = widget && widget.querySelector(CONTENT_SELECTOR);
   /** @type {Node} */
-  var listItems = content.querySelector('ul > li');
+  var listItems = content && content.querySelector('ul > li');
   /** @type {Node} */
-  var noData = widget.querySelector(NODATA_SELECTOR);
+  var noData = widget && widget.querySelector(NODATA_SELECTOR);
 
   // Element with CSS class 'widget-subheader' should contain string;
   // If element with ID 'microdata-container' isn't empty, element with CSS
