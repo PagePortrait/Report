@@ -44,8 +44,8 @@ function testOptionsButton() {
   var buttonClosed = element &&
       element.getElementsByClassName(BUTTON_CLOSED_CLASS_NAME);
 
-  // Element with CSS class 'report-actions' should contain element with
-  // ID 'toggle-widgets-view'.
+  // Element with CSS class 'report-actions' should contain element 
+  // with ID 'toggle-widgets-view'.
   /** @type {Element} */
   var toggleButton = document.getElementById(TOGGLE_BUTTON_ID);
   /** @type {NodeList} */
