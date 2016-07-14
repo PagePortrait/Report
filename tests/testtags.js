@@ -46,10 +46,9 @@ function testTags() {
   // If element with CSS class 'widget-deprecated-tags' is empty, it should
   // contain element with CSS classes 'rule not true';
   /** @type {boolean} */
-  var result = !container.querySelector(TRUE_SELECTOR);
+  var result = container && !container.querySelector(TRUE_SELECTOR);
   /** @type {Element} */
-  var passElement = container.querySelector(PASS_SELECTOR);
-
+  var passElement = container && container.querySelector(PASS_SELECTOR);
 
   // Element with ID 'content-tags-container' should contain element with ID
   // 'tags-data-table'.
