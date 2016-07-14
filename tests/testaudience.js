@@ -5,8 +5,8 @@
  * - Elements with ID prefix 'audience-engagement-‘ should contain content and
  *   the format should adhere to the following examples: 10.1% or 10% or
  *   10:1 or 10;
- * - If in elements with ID prefix 'audience-engagement-‘ isn't data, 
- *   content should be equal 'N/A'.
+ * - If in elements with ID prefix 'audience-engagement-‘ isn't data,
+ *   content should be equal 'N/A' or '-'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
@@ -40,12 +40,13 @@ function testAudience() {
     element = document.getElementById(nodes[--length]);
     content = element && element.textContent.trim();
 
-    // Elements with ID prefix 'audience-engagement-‘ should contain content 
+    // Elements with ID prefix 'audience-engagement-‘ should contain content
     // and the format should adhere to the following examples: 10.1% or 10% or
     // 10:1 or 10;
-    // If in elements with ID prefix 'audience-engagement-‘ isn't data, 
-    // content should be equal 'N/A'
-    if (!(content && (PATTERN.test(content) || 'N/A' == content))) {
+    // If in elements with ID prefix 'audience-engagement-‘ isn't data,
+    // content should be equal 'N/A' or '-'.
+    if (!(content && (PATTERN.test(content) || 'N/A' == content ||
+        '-' == content))) {
       result = true;
       break;
     }
