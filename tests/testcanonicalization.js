@@ -6,8 +6,8 @@
  *   ID 'canonical-url' and element with ID 'canonical-ip';
  * - Element with ID 'canonical-url' and element with ID 'canonical-ip' should
  *   contain element with CSS class 'pass' or element with CSS class 'fail';
- * - Element with CSS class 'pass' should contain string 'Yes';
- * - Element with CSS class 'fail' should contain string 'No';
+ * - Element with CSS class 'pass' should contain string;
+ * - Element with CSS class 'fail' should contain string;
  * - Element with CSS class 'pass' should have CSS style property 
  *   'display: block' if canonical check pass or CSS style property 
  *   'display: none' if canonical check does not pass;
@@ -52,8 +52,8 @@ function testCanonicalization() {
         // CSS class 'fail'.
         passElement = element && element.querySelector(PASS_SELECTOR);
         failElement = element && element.querySelector(FAIL_SELECTOR);
-        // Element with CSS class 'pass' should contain string 'Yes';
-        // Element with CSS class 'fail' should contain string 'No';
+        // Element with CSS class 'pass' should contain string;
+        // Element with CSS class 'fail' should contain string;
         if (passElement.textContent.trim() && failElement.textContent.trim()) {
           passDisplay =
               getComputedStyle(passElement).getPropertyValue('display');
