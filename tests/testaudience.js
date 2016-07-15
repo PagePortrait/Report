@@ -2,9 +2,9 @@
  * @fileoverview Defines test for Audience engagement.
  * Success criteria:
  * - Elements with ID prefix 'audience-engagement-‘ should exist;
- * - Elements with ID prefix 'audience-engagement-‘ should contain content and
- *   the format should adhere to the following examples: 10.1% or 10% or
- *   10:1 or 10;
+ * - Elements with ID prefix 'audience-engagement-‘ should contain content
+ *   equal 'N/A' or '-' or one of following string: '10.1%', '10%',
+ *   '10:1', '10';
  * - If element with ID prefix 'audience-engagement-‘ is empty, then
  *   it's content should equal 'N/A' or '-'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
@@ -41,10 +41,8 @@ function testAudience() {
     content = element && element.textContent.trim();
 
     // Elements with ID prefix 'audience-engagement-‘ should contain content
-    // and the format should adhere to the following examples: 10.1% or
-    // 10% or 10:1 or 10;
-    // If element with ID prefix 'audience-engagement-‘ is empty, then
-    // it's content should be equal 'N/A' or '-'.
+    // equal 'N/A' or '-' or one of following string: '10.1%', '10%',
+    // '10:1', '10'.
     if (!(content && (PATTERN.test(content) || 'N/A' == content ||
         '-' == content))) {
       result = true;
