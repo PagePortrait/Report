@@ -6,7 +6,7 @@
  *   the format should adhere to the following examples: 10.1% or 10% or
  *   10:1 or 10;
  * - If element with ID prefix 'audience-engagement-‘ is empty, then
- *   it's content should be equal 'N/A' or '-'.
+ *   it's content should equal 'N/A' or '-'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
