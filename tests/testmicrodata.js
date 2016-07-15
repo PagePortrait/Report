@@ -37,7 +37,7 @@ function testMicrodata() {
   // class 'widget-subheader'
   /** @type {string} */
   var subheader = widget &&
-  widget.querySelector(SUBHEADER_SELECTOR).textContent.trim();
+      widget.querySelector(SUBHEADER_SELECTOR).textContent.trim();
 
   // Element with ID 'microdata-container' should contain element with CSS
   // class 'widget-content'.

@@ -8,11 +8,11 @@
  *   contain element with CSS class 'pass' or element with CSS class 'fail';
  * - Element with CSS class 'pass' should contain string;
  * - Element with CSS class 'fail' should contain string;
- * - Element with CSS class 'pass' should have CSS style property 
- *   'display: block' if canonical check pass or CSS style property 
+ * - Element with CSS class 'pass' should have CSS style property
+ *   'display: block' if canonical check pass or CSS style property
  *   'display: none' if canonical check does not pass;
- * - Element with CSS class 'fail' should have CSS style property 
- *   'display: block' or 'display: inline-block' if canonical check does 
+ * - Element with CSS class 'fail' should have CSS style property
+ *   'display: block' or 'display: inline-block' if canonical check does
  *   not pass or CSS style property 'display: none' if check pass.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
