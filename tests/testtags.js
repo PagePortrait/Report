@@ -15,7 +15,7 @@
  *   contain element with CSS classes 'rule not' and shouldn't contain
  *   element with CSS classes 'rule not true';
  * - If element with CSS class 'widget-deprecated-tags' isn't empty,
- *   elements with tag name 'tr' should contain elements with tag name 'th' 
+ *   elements with tag name 'tr' should contain elements with tag name 'th'
  *   and 'td';
  * - In element with tag name 'tr' first element should contain string,
  *   second element should contain number.
@@ -69,7 +69,7 @@ function testTags() {
       for (; length;) {
         result = !result;
         // If element with CSS class 'widget-deprecated-tags' isn't empty,
-        // elements with tag name 'tr' should contain elements with 
+        // elements with tag name 'tr' should contain elements with
         // tag name 'th' and 'td'.
         cells = nodes[--length].querySelectorAll('th, td');
         number = cells[1].textContent.trim();
