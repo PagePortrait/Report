@@ -6,8 +6,10 @@
  *   ID 'canonical-url' and element with ID 'canonical-ip';
  * - Element with ID 'canonical-url' and element with ID 'canonical-ip' should
  *   contain element with CSS class 'pass' or element with CSS class 'fail';
- * - Element with CSS class 'pass' should contain string;
- * - Element with CSS class 'fail' should contain string;
+ * - Elements with CSS class 'pass' content should not be empty, null or
+ *   undefined;
+ * - Elements with CSS class 'fail' content should not be empty, null or
+ *   undefined;
  * - Element with CSS class 'pass' should have CSS style property
  *   'display: block' if canonical check pass or CSS style property
  *   'display: none' if canonical check does not pass;
@@ -40,6 +42,8 @@ function testCanonicalization() {
   /** @type {Element} */ var failElement;
   /** @type {string} */ var passDisplay;
   /** @type {string} */ var failDisplay;
+  /** @type {?string} */ var passText;
+  /** @type {?string} */ var failText;
 
   if (!result) {
     for (; length;) {
@@ -52,9 +56,14 @@ function testCanonicalization() {
         // CSS class 'fail'.
         passElement = element && element.querySelector(PASS_SELECTOR);
         failElement = element && element.querySelector(FAIL_SELECTOR);
-        // Element with CSS class 'pass' should contain string;
-        // Element with CSS class 'fail' should contain string;
-        if (passElement.textContent.trim() && failElement.textContent.trim()) {
+        passText = passElement.textContent.trim();
+        failText = failElement.textContent.trim();
+        // Elements with CSS class 'pass' content should not be empty, null or
+        // undefined;
+        // Elements with CSS class 'fail' content should not be empty, null or
+        // undefined;
+        if ((passText && 'undefined' != passText && 'null' != passText) &&
+            (failText && 'undefined' != failText && 'null' != failText)) {
           passDisplay =
               getComputedStyle(passElement).getPropertyValue('display');
           failDisplay =
