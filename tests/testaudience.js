@@ -5,8 +5,6 @@
  * - Elements with ID prefix 'audience-engagement-‘ should contain content 
  *   equal 'N/A' or '-' or one of following string: '10.1%', '10%', 
  *   '10:1', '10';
- * - If element with ID prefix 'audience-engagement-‘ is empty, then
- *   it's content should equal 'N/A' or '-'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
  * @see http://developers.google.com/closure/compiler/docs/js-for-compiler
  */
