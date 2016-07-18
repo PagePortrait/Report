@@ -35,7 +35,7 @@ function testWebFiles() {
   /** @type {Element} */
   var container = document.getElementById(WIDGET_ID);
   /** @type {NodeList} */
-  var elements = container && container.querySelectorAll('h4');
+  var elements = container && container.querySelectorAll('h5');
   /** @type {number} */ var length = container && elements.length;
   /** @type {number} */ var code;
   /** @type {string} */ var text;

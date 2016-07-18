@@ -32,7 +32,7 @@ readonly USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit
 #
 function config() {
   echo "var page = require('webpage').create();
-        var url = 'http://pageportrait.com/dev/portrait?url=${TEST_URL}&mode=test';
+        var url = 'http://pageportrait.com/portrait?url=${TEST_URL}&mode=test';
         var fs = require('fs');
         var CWD = fs.workingDirectory;
         var TIMEOUT = 30; // in seconds
