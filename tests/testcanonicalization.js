@@ -23,7 +23,7 @@
 
 /** @const {string} */ var PASS_SELECTOR = '.pass';
 /** @const {string} */ var FAIL_SELECTOR = '.fail';
-/** @const {string} */ var WIDGET_SELECTOR = '.widget-canonical-url';
+/** @const {string} */ var WIDGET_SELECTOR = '.widget-canonical';
 /** @const {string} */ var CANONICAL_IP_ID = 'canonical-ip';
 /** @const {string} */ var CANONICAL_URL_ID = 'canonical-url';
 
