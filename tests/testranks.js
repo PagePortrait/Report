@@ -5,7 +5,7 @@
  * - Element with ID 'alexa-country-rank' should exist;
  * - Element with ID 'mozdata-domain-authority' should exist;
  * - Elements with ID 'alexa-global-rank', 'alexa-country-rank'
- *   should contain string formated '10.1%', '10:1', '10'or '-' or 'N/A';
+ *   should contain string formated '10.1', '10,1', '10' or '-' or 'N/A';
  * - Element with ID 'mozdata-domain-authority' should contain number between
  *   0 and 100 or one of following string: '-' or 'N/A'.
  * @see http://google.github.io/styleguide/javascriptguide.xml
@@ -33,7 +33,7 @@
  */
 function validateAlexaData_(value) {
   // Elements with ID 'alexa-global-rank', 'alexa-country-rank'
-  // should contain string formated '10.1%', '10:1', '10'or '-' or 'N/A'.
+  // should contain string formated '10.1', '10,1', '10' or '-' or 'N/A'.
   return PATTERN.test(value) || 'N/A' == value || '-' == value;
 }
 
