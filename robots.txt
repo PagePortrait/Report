@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /portrait
+Disallow: /compare
+Allow: /
+
+Sitemap: https://www.pageportrait.com/sitemap.xml
+Host: pageportrait.com

@@ -1,3 +1,0 @@
-language: javascript
-script:
-  - ./build/jstest.sh

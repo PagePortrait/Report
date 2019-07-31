@@ -1,0 +1,11 @@
+{
+  "name": "Page Portrait",
+  "short_name": "PagePortrait",
+  "description": "Discover web page to get digital marketing report.",
+  "lang": "en",
+  "background_color": "#fff",
+  "theme_color": "#333",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
