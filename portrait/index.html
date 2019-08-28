@@ -163,6 +163,11 @@
                 <h5><span id="mozdata-domain-authority"><span
                           class="loader"></span></span><i>/100</i></h5>
               </li>
+              <li>
+                <h4>Moz page authority</h4>
+                <h5><span id="mozdata-page-authority"><span
+                          class="loader"></span></span><i>/100</i></h5>
+              </li>
             </ul>
           </div>
         </div>
@@ -326,6 +331,10 @@
                 <h4>favicon.ico</h4>
                 <h5><span class="loader"></span></h5>
               </li>
+              <li>
+                <h4>manifest.json</h4>
+                <h5><span class="loader"></span></h5>
+              </li>
             </ul>
           </div>
         </div>
@@ -341,6 +350,10 @@
           <li class="notification-{{ favicon.ico|0 }}">
             <h4>favicon.ico</h4>
             <h5><i>Status:</i> {{ favicon.ico|0 }}</h5>
+          </li>
+          <li class="notification-{{ manifest.json|0 }}">
+            <h4>manifest.json</h4>
+            <h5><i>Status:</i> {{ manifest.json|0 }}</h5>
           </li>
         </script>
         <!-- / web files placeholder -->
