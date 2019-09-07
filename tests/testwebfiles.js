@@ -57,6 +57,7 @@ function testWebFiles() {
       if (!isNaN(code) || ~HTTP_STATUS_CODES.indexOf(code)) {
         result = false;
       }
+      // console.log('testwebfiles:status:' + code);
     }
   }
   return result;

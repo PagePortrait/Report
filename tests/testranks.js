@@ -11,11 +11,17 @@
 /** @const {!Object.<string, function(string):boolean>} */ var VALIDATORS = {
   /** @return {boolean} */ 'alexa-global-rank': validateAlexaData_,
   /** @return {boolean} */ 'alexa-country-rank': validateAlexaData_,
-  /** @return {boolean} */ 'mozdata-domain-authority': function(content) {
-    return !isNaN(content) && content >= 0 && content <= 100;
-  }
+  /** @return {boolean} */ 'mozdata-domain-authority': validateMozData_,
+  /** @return {boolean} */ 'mozdata-page-authority': validateMozData_
 };
 
+/**
+ * @param {string} value The moz data value to validate.
+ * @return {boolean} Returns "true" if value is valid.
+ */
+function validateMozData_(value) {
+  return !isNaN(value) && value >= 0 && value <= 100;
+}
 
 /**
  * @param {string} value The alexa data value to validate.
@@ -34,11 +40,13 @@ function testRanks() {
     /** @type {Element} */ var element = document.getElementById(metric);
     /** @type {string} */ var content = element && element.textContent.trim();
     /** @type {function(string):boolean} */ var validator = VALIDATORS[metric];
+    // console.log('testranks:' + content);
 
     if (content && !validator(content)) {
       return true;
     }
   }
+
   return false;
 }
 
