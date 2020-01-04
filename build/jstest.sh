@@ -3,7 +3,7 @@
 # Guide: https://google.github.io/styleguide/shell.xml
 # Link: https://code.google.com/p/js-test-driver/
 
-readonly TEST_URL="https://www.dtm.io"
+readonly TEST_URL="https://pageportrait.com/"
 
 readonly CWD=$(cd $(dirname $0); pwd)
 readonly LIB="${CWD}/lib"
@@ -31,7 +31,7 @@ readonly USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit
 #
 function config() {
   echo "var page = require('webpage').create();
-        var url = 'http://pageportrait.com/portrait?url=${TEST_URL}';
+        var url = 'https://pageportrait.com/portrait?url=${TEST_URL}';
         var fs = require('fs');
         var CWD = fs.workingDirectory;
         var TIMEOUT = 30; // in seconds
