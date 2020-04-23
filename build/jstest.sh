@@ -3,7 +3,7 @@
 # Guide: https://google.github.io/styleguide/shell.xml
 # Link: https://code.google.com/p/js-test-driver/
 
-readonly TEST_URL="https://www.dtm.io"
+readonly TEST_URL="https://pageportrait.com/"
 
 readonly CWD=$(cd $(dirname $0); pwd)
 readonly LIB="${CWD}/lib"
@@ -24,15 +24,14 @@ readonly PHANTOMJS_LINUX64_URL="${PHANTOMJS_URL}/${PHANTOMJS_PREFIX}-linux-x86_6
 
 readonly RND1=$(($RANDOM % 40 + 10))
 readonly RND2=$(($RANDOM % 99 + 10))
-readonly USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.${RND1} (KHTML, like Gecko) Chrome/50.0.2661.${RND2} Safari/537.${RND1}"
-
+readonly USER_AGENT="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.${RND1} (KHTML, like Gecko) Chrome/76.0.3809.${RND2} Safari/537.${RND1}"
 
 #
 # Configures tests runner.
 #
 function config() {
   echo "var page = require('webpage').create();
-        var url = 'http://pageportrait.com/portrait?url=${TEST_URL}&mode=test';
+        var url = 'https://pageportrait.com/portrait?url=${TEST_URL}';
         var fs = require('fs');
         var CWD = fs.workingDirectory;
         var TIMEOUT = 30; // in seconds
@@ -45,28 +44,7 @@ function config() {
         };
 
         page.onConsoleMessage = function(msg) {
-          console.log('CONSOLE LOG: ' + msg);
-        };
-
-        page.onInitialized = function(status) {
-          page.evaluate(function() {
-            window.URL = function(url) {
-              function init_() {
-                var regexp = /^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
-                var match = (url || '').match(regexp) || [];
-                self_['protocol'] = match[2] ? match[2] + ':' : '';
-                self_['host'] = match[4] || '';
-                self_['hostname'] = self_['host'].split(':')[0];
-                self_['port'] = +(self_['host'].split(':')[1]) || '';
-                self_['pathname'] = match[5] || '';
-                self_['search'] = match[7] ? ('?' + match[7]) : '';
-                self_['hash'] = match[9] ? ('#' + match[9]) : '';
-                self_['origin'] = self_['protocol'] + '//' + self_['host'];
-              }
-              var self_ = this;
-              init_();
-            };
-          });
+          console.log('CONSOLE LOG: ',  msg);
         };
 
         page.open(url, function() {

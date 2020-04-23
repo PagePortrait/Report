@@ -1,3 +1,6 @@
 language: javascript
 script:
   - ./build/jstest.sh
+notifications:
+  email:
+    recipients: dev@dtm.io
