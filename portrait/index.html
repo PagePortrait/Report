@@ -405,7 +405,7 @@
               <div class="dtm-grid-cell-7">
                 <div class="widget-header"><h3>Desktop page speed</h3></div>
                 <div class="widget-content">
-                  <h4>{{ ruleGroups.SPEED.score|0 }}/100</h4>
+                  <h4>{{ score|0 }}/100</h4>
                   <div id="pagespeed-score-table"></div>
                 </div>
                 <div class="no-data-message">Page speed data is not available.</div>
@@ -414,7 +414,7 @@
               </div>
               <div class="dtm-grid-cell-5">
                 <div class="desktop">
-                  <img src="data:image/jpg;base64,{{ screenshot.data }}"
+                  <img src="{{ screenshot.data }}"
                        alt="Desktop screenshot."
                        width="{{ screenshot.width }}"
                        height="{{ screenshot.height }}"
@@ -443,7 +443,7 @@
               <div class="dtm-grid-cell-7">
                 <div class="widget-header"><h3>Mobile user experience</h3></div>
                 <div class="widget-content">
-                  <h4>{{ ruleGroups.USABILITY.score|0 }}/100</h4>
+                  <h4>{{ score|0 }}/100</h4>
                   <div id="mobile-score-table"></div>
                 </div>
                 <div class="no-data-message">Mobile friendly data is not available.</div>
@@ -452,7 +452,7 @@
               </div>
               <div class="dtm-grid-cell-5">
                 <div class="mobile">
-                  <img src="data:image/jpg;base64,{{ screenshot.data }}"
+                  <img src="{{ screenshot.data }}"
                        alt="Mobile screenshot."
                        width="{{ screenshot.width }}"
                        height="{{ screenshot.height }}"
@@ -497,11 +497,13 @@
                   </li>
                   <li>
                     <b style="background-color:{{ CHARTS.DONUT.COLORS.IMAGES }}"></b>
-                    Images ({{ pageStats.imageResponseBytes-formatted|0 }})
+                    Images ({{ pageStats.imageResponseBytes-formatted|0 }} /
+                            {{ pageStats.numberImageResources|0 }})
                   </li>
                   <li>
                     <b style="background-color:{{ CHARTS.DONUT.COLORS.HTML }}"></b>
-                    HTML ({{ pageStats.htmlResponseBytes-formatted|0 }})
+                    HTML ({{ pageStats.htmlResponseBytes-formatted|0 }} /
+                          {{ pageStats.numberHtmlResources|0 }})
                   </li>
                 </ul>
               </div>
