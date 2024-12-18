@@ -30,7 +30,7 @@
       iframe = document.documentElement.appendChild(
         document.createElement("iframe")
       );
-      iframe.style.position = "abosolute";
+      iframe.style.position = "absolute";
       iframe.style.width = "9px";
       iframe.style.height = "9px";
       iframe.style.top = "-9px";
