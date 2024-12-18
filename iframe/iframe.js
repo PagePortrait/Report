@@ -63,7 +63,7 @@
         console.log("[PARENT] HANDSHAKE_ACTION");
         iframe.contentWindow.postMessage(
           { action: actions.INCREMENT_VIEWS_ACTION },
-          location.origin
+          "*" // location.origin
         );
       } else if (action === actions.INCREMENT_VIEWS_ACTION) {
         console.log("[PARENT] INCREMENT_VIEWS_ACTION");
