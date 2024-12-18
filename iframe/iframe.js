@@ -19,31 +19,33 @@
 
     let content = meta.getAttribute("content") || "";
     // TODO: update the "frame-src" policy directive if exisits:
-    content = `frame-src 'self' ${IFRAME_DOMAIN}; ${content}`;
+    content = `frame-src 'self' ${IFRAME_ORIGIN}; ${content}`;
     meta.setAttribute("content", content);
   };
 
-  const getCookieIframe = () => {
-    let iframe = document.getElementById(IFRAME_ID);
-    if (!iframe) {
-      // updateCSP();
-      iframe = document.documentElement.appendChild(
-        document.createElement("iframe")
-      );
-      iframe.style.position = "absolute";
-      iframe.style.width = "9px";
-      iframe.style.height = "9px";
-      iframe.style.top = "-9px";
-      iframe.style.left = "-9px";
-      iframe.style.border = 0;
-      iframe.sandbox = "allow-scripts allow-same-origin";
-      iframe.id = IFRAME_ID;
-      iframe.src = `${IFRAME_SOURCE}?origin=${location.origin}&nc=${IFRAME_ID}`;
-      // https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp
-      // iframe.csp = `frame-src 'self' ${IFRAME_DOMAIN}`;
-    }
+  const initIframe = () => {
+    // updateCSP();
+    const iframe = document.documentElement.appendChild(
+      document.createElement("iframe")
+    );
+    iframe.style.position = "absolute";
+    iframe.style.width = "9px";
+    iframe.style.height = "9px";
+    iframe.style.top = "-9px";
+    iframe.style.left = "-9px";
+    iframe.style.border = 0;
+    iframe.sandbox = "allow-scripts allow-same-origin";
+    // https://developer.mozilla.org/en-US/docs/Web/API/HTMLIFrameElement/csp
+    // iframe.csp = `frame-src 'self' ${IFRAME_ORIGIN}`;
+    iframe.id = IFRAME_ID;
+    iframe.src = `${IFRAME_SOURCE}?origin=${location.origin}&nc=${IFRAME_ID}`;
     return iframe;
   };
+
+  window.addEventListener("load", (event) => {
+    console.log("[PARENT] load:event:", event);
+    initIframe();
+  });
 
   window.addEventListener("message", (event) => {
     console.log("[PARENT] message:event:", event);
@@ -51,7 +53,7 @@
     const actions = event.data && event.data.actions;
     const origin = event.origin;
     if (actions && origin === IFRAME_ORIGIN) {
-      const iframe = getCookieIframe();
+      const iframe = document.getElementById(IFRAME_ID) || initIframe();
       const action = event.data && event.data.action;
       if (action === actions.HANDSHAKE_ACTION) {
         console.log("[PARENT] HANDSHAKE_ACTION");
